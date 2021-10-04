@@ -1,0 +1,353 @@
+/*
+filename: Mitchell Anton
+author: Mitchell Anton
+created: 22/08/2021
+last modified: 26/08/2021
+description: Refers to index.html, jobs.html, apply.html, about.html, enhancements.html
+*/
+
+/* Applies colour to all elements except the navigation bar at top of page */
+
+body:not(#main_menu) {
+    background-color: #EFEFEF;
+}
+
+/* Font for all text */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cursor style when hovering over all buttons and all a tags. */
+
+button, a, .form_action {
+    cursor: pointer;
+}
+
+h1 {
+    font: 40px Arial, Helvetica, sans-serif;
+}
+
+/* Set backgroun color of all text (not including some specific text)/ */
+
+p:not(#timer), li, dt, dd, strong {
+    background-color: #CAEBF2;
+}
+
+#main_menu nav {
+    float: right;
+    margin-top: 4%;
+    margin-right: 20%;
+}
+
+#main_menu {
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+/* Style when you hover over links at top of page and footer. */
+
+nav a:hover {
+    border-bottom: 12px #FF3B3F;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-style: solid;
+    padding-bottom: 10px;
+    transition: border-bottom 0.2s ease-out;
+}
+
+/* Apperance of links in nav bar. */
+
+.nav_bar, footer nav a {
+    text-decoration: none;
+    color: #A9A9A9;
+}
+
+/* Apperance of link we are currently on. */
+
+#highlighted {
+    text-decoration: none;
+    color: #FF3B3F;
+}
+
+/* Display background image. Code taken from https://css-tricks.com/perfect-full-page-background-image/ */
+
+#index_page {
+    background: url(images/background_graphic.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Enchancement */
+
+#jobs {
+    transition: background-color 0.5s linear;
+    text-decoration: none;
+    font-size: 20px;
+    color: #A9A9A9;
+    padding: 9.5% 14% 8.5% 14%;
+    margin-left: 8.5%;
+    display: inline-block;
+    /* Prevents overlapping when screen shrinks. */
+}
+
+#apply {
+    transition: background-color 0.5s linear;
+    text-decoration: none;
+    font-size: 20px;
+    color: #A9A9A9;
+    padding: 9.5% 10% 8.5% 10%;
+    display: inline-block;
+    /* Prevents overlapping when screen shrinks. */
+}
+
+#jobs:hover, #apply:hover {
+    background-color: rgb(114, 243, 243);
+    color: #FF3B3F;
+    transition: background-color 1s linear, color 0.5s linear;
+}
+
+/********************************* Above refers to index.html and menu bar *********************************/
+
+/* Make definition list inline. */
+
+dt {
+    display: block;
+    float: left;
+    width: 150px;
+}
+
+dd {
+    width: 500px;
+}
+
+dl {
+    float: left;
+}
+
+#photo_of_me {
+    float: right;
+    border: 4px #FF3B3F;
+    border-style: double;
+    margin-top: 30px;
+}
+
+#timetable {
+    clear: both;
+    border: 4px #FF3B3F;
+    border-style: solid;
+    border-collapse: collapse;
+    /* Connect the table borders */
+    background: #CAEBF2;
+    margin-left: auto;
+    /* Centre the table */
+    margin-right: auto;
+    /* Centre the table */
+}
+
+#timetable thead th {
+    border-bottom: 2px #FF3B3F solid;
+    border-left: 2px #FF3B3F solid;
+    border-right: 2px #FF3B3F solid;
+}
+
+#timetable tbody th, #timetable tbody td {
+    border-right: 2px #FF3B3F solid;
+    border-bottom: 2px #FF3B3F solid;
+    background-color: #CAEBF2;
+    width: 180px;
+    height: 30px;
+}
+
+/* Make time headers top left of cell. */
+
+#timetable tbody th {
+    text-align: left;
+    vertical-align: top;
+}
+
+#timetable tbody td {
+    color: #FF3B3F;
+}
+
+/* Border around filled classes */
+
+#timetable .filled {
+    background-color: white;
+    border: 4px #FF3B3F solid;
+}
+
+/* Gets rid of lines in middle of filled classes */
+
+#timetable .filled:not(.top) {
+    border-top: none;
+}
+
+/* Gets rid of lines in middle of filled classes */
+
+#timetable .filled:not(.bottom) {
+    border-bottom: none;
+}
+
+#contact_me a {
+    text-decoration: none;
+    background-color: #CAEBF2;
+    color: black;
+    transition: font-size 1s linear;
+}
+
+#contact_me a:hover {
+    font-size: 1.2em;
+    transition: font-size 1s linear;
+}
+
+/********************************* Above refers to about.html *********************************/
+
+footer {
+    background: #CAEBF2;
+    font-size: 85%;
+}
+
+footer nav, footer p {
+    text-align: center;
+}
+
+#footer_logo {
+    display: block;
+    margin: auto;
+    width: 10%;
+}
+
+/* Change colour of copyright symbol. */
+
+footer p::first-letter {
+    color: #FF3B3F;
+}
+
+footer p {
+    color: #A9A9A9;
+}
+
+/********************************* Above refers to footer *********************************/
+
+#first_job, #second_job {
+    width: 60%;
+    padding-left: 20px;
+    padding-right: 10px;
+    border: 4px #FF3B3F;
+    border-style: inset;
+}
+
+#first_job {
+    margin-bottom: 5px;
+}
+
+aside {
+    margin-top: 50px;
+    right: 0;
+    border: 4px #CAEBF2;
+    border-style: dotted;
+    width: 25%;
+    text-align: center;
+    position: fixed;
+}
+
+.apply_button {
+    text-decoration: underline;
+    background-color: #CAEBF2;
+    color: #FF3B3F;
+}
+
+.apply_button:hover {
+    text-decoration: none;
+    border-bottom: 6px #FF3B3F;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-style: solid;
+    padding-bottom: 5px;
+    transition: border-bottom 0.2s ease-out;
+}
+
+/********************************* Above refers to jobs.html *********************************/
+
+/* Style input fields for form. */
+
+input, fieldset, select, textarea {
+    border-radius: 10px;
+    border: 1px solid #FF3B3F;
+}
+
+.form_action:hover {
+    color: #A9A9A9;
+}
+
+.error_message {
+    color: red;
+}
+
+/********************************* Above refers to apply.html *********************************/
+
+/* The below two statements display the timer inline with the header. */
+
+#form_header {
+    display: inline;
+}
+
+#timer {
+    display: inline;
+    float: right;
+    font-size: 1.2em;
+}
+
+/********************************* Above refers to the timer in apply.html *********************************/
+
+#slideshow_image {
+    height: 500px;
+    width: 100%;
+}
+
+#slideshow {
+    position: relative;
+    /* Makes position absolute work as intended. */
+}
+
+#slideshow_navigator {
+    position: absolute;
+    top: 90%;
+    /*Centre the buttons. Taken from 
+    https://stackoverflow.com/questions/1776915/how-can-i-center-an-absolutely-positioned-element-in-a-div */
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#slideshow_navigator button {
+    background: none;
+    border: 1px solid white;
+    border-radius: 50%;
+    height: 15px;
+}
+
+.slideshow_link {
+    position: absolute;
+    top: 60%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    /* Centre the links. Taken from 
+    https://stackoverflow.com/questions/1776915/how-can-i-center-an-absolutely-positioned-element-in-a-div */
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.slideshow_link:hover {
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: border 0.2s ease-out;
+}
+
+/********************************* Above refers to slideshow in index.html *********************************/
