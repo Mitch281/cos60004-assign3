@@ -11,17 +11,10 @@
 </head>
 
 <body>
-    <section id="main_menu">
-        <a id="logo" href="index.html"><img src="styles/images/logo2.png" alt="Company Logo"></a>
-        <nav>
-            <a class="nav_bar" href="index.html">Home Page</a> |
-            <a class="nav_bar" href="jobs.html">Job Descriptions</a> |
-            <a class="nav_bar" href="apply.html">Apply for a Job</a> |
-            <a class="nav_bar" href="about.html">About Me</a> |
-            <a class="nav_bar" href="enhancements.html">Enhancements</a> |
-            <a id="highlighted" href="enhancements2.html">Enhancements2</a>
-        </nav>
-    </section>
+    <?php
+        $page = "enhancements2Page";
+        include_once("menu.inc"); 
+    ?>
     <h1>Enhancements 2</h1>
     <h2><a href="apply.html">Enhancement 1</a></h2>
     <ul>
@@ -57,4 +50,13 @@
             getButtonClicked function.
         </li>
     </ul>
+    <footer>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="index.html">About Us</a> |
+            <a href="mailto:Anton&TuringTechnologies@fakeemail.com">Contact Us</a>
+        </nav>
+        <a id="footer_logo" href="index.html"><img src="styles/images/logo2.png" alt="Company Logo"></a>
+        <p>&copy; Anton & Turing Technologies</p>
+    </footer>
 </body>

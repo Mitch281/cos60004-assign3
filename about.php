@@ -11,17 +11,10 @@
 </head>
 
 <body>
-    <section id="main_menu">
-        <a id="logo" href="index.html"><img src="styles/images/logo2.png" alt="Company Logo"></a>
-        <nav>
-            <a class="nav_bar" href="index.html">Home Page</a> |
-            <a class="nav_bar" href="jobs.html">Job Descriptions</a> |
-            <a class="nav_bar" href="apply.html">Apply for a Job</a> |
-            <a id="highlighted" href="about.html">About Me</a> |
-            <a class="nav_bar" href="enhancements.html">Enhancements</a> |
-            <a class="nav_bar" href="enhancements2.html">Enhancements2</a>
-        </nav>
-    </section>
+    <?php
+        $page = "aboutPage";
+        include_once("menu.inc");
+    ?>
     <dl>
         <dt>My name:</dt>
         <dd>Mitchell Anton</dd>

@@ -12,17 +12,10 @@
 </head>
 
 <body>
-    <section id="main_menu">
-        <a id="logo" href="index.html"><img src="styles/images/logo2.png" alt="Company Logo"></a>
-        <nav>
-            <a class="nav_bar" href="index.html">Home Page</a> |
-            <a id="highlighted" href="jobs.html">Job Descriptions</a> |
-            <a class="nav_bar" href="apply.html">Apply for a Job</a> |
-            <a class="nav_bar" href="about.html">About Me</a> |
-            <a class="nav_bar" href="enhancements.html">Enhancements</a> |
-            <a class="nav_bar" href="enhancements2.html">Enhancements2</a>
-        </nav>
-    </section>
+    <?php
+        $page = "jobDescriptions";
+        include_once("menu.inc"); 
+    ?>
     <aside>
         <a href=""><img src="styles/images/facebook.png" alt="Facebook icon" /></a>
         <a href=""><img src="styles/images/linkedin.png" alt="Linkedin icon" /></a>

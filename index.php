@@ -12,17 +12,10 @@
 </head>
 
 <body id="index_page">
-    <section id="main_menu">
-        <a id="logo" href="index.html"><img src="styles/images/logo2.png" alt="Company Logo"></a>
-        <nav>
-            <a id="highlighted" href="index.html">Home Page</a> |
-            <a class="nav_bar" href="jobs.html">Job Descriptions</a> |
-            <a class="nav_bar" href="apply.html">Apply for a Job</a> |
-            <a class="nav_bar" href="about.html">About Me</a> |
-            <a class="nav_bar" href="enhancements.html">Enhancements</a> |
-            <a class="nav_bar" href="enhancements2.html">Enhancements2</a>
-        </nav>
-    </section>
+    <?php
+        $page = "homePage";
+        include_once("menu.inc"); 
+    ?>
     <h1 id="welcome_message">Welcome to Anton & Turing Technologies</h1>
     <section id="company_info">
         <section id="slideshow">
