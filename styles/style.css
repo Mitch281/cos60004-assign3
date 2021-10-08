@@ -35,14 +35,21 @@ p:not(#timer), li, dt, dd, strong {
 }
 
 #main_menu nav {
-    float: right;
-    margin-top: 4%;
-    margin-right: 20%;
+    position: absolute;
+    left: 28%;
+    top: 47%;
+}
+
+#main_menu #logo {
+    position: absolute;
+    left: 2%;
 }
 
 #main_menu {
+    position: relative;
     background-color: white;
     margin-bottom: 10px;
+    height: 120px;
 }
 
 /* Style when you hover over links at top of page and footer. */
