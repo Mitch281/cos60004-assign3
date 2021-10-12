@@ -256,6 +256,65 @@
             return $valid;
         }
 
-        echo (int)validateForm();
+        function sendDataToEOI() {
+            require_once("settings.php");
+            $connection = @mysqli_connect($host, $user, $pwd, $sql_db);
+
+            if (!$connection) {
+                echo "<p>Database connection failure.</p>";
+            }
+
+            // All of the data is valid. Thus, we can proceed putting data into database.
+            else if (validateForm()) {
+                $sqlTable = "eoi";
+
+                $eoiNumber = null;
+                $jobReferenceNumber = sanitise_input($_POST["reference_number"]);
+                $firstName = sanitise_input($_POST["first_name"]);
+                $lastName = sanitise_input($_POST["last_name"]);
+                $streetAddress = sanitise_input($_POST["street_address"]);
+                $suburb = sanitise_input($_POST["suburb"]);
+                $state = $_POST["state"];
+                $postcode = sanitise_input($_POST["postcode"]);
+                $email = sanitise_input($_POST["email"]);
+                $phoneNumber = sanitise_input($_POST["phone_number"]);
+
+                // We still need to check this because other skills is not compulsory for the form to be validated.
+                if (isset($_POST["skills"])) {
+                    $skills = "";
+                    // Put the skills checked into a string $skills.
+                    for ($i = 0; $i < count($_POST["skills"]); $i++) {
+                        $skills .= $_POST["skills"][$i];
+                        if ($i != count($_POST["skills"]) - 1) {
+                            $skills .= ",";
+                        }
+                    }
+                } 
+                else {
+                    $skills = null;
+                }  
+
+                $otherSkills = sanitise_input($_POST["other_skills"]);
+                $status = "New";
+
+                echo "<p>eoiNumber: $eoiNumber<br> 
+                jobreferencenumver: $jobReferenceNumber<br> 
+                firstname: $firstName<br> 
+                lastname: $lastName<br>  
+                street address: $streetAddress <br> 
+                suburb: $suburb <br> 
+                state: $state <br> 
+                postcode: $postcode <br>
+                email: $email <br>
+                phone number: $phoneNumber <br> 
+                skills: $skills <br> 
+                other skills: $otherSkills <br> 
+                status: $status <br>
+                </p>";
+            }
+        }
+
+        validateForm();
+        sendDataToEOI();
     ?>
 </body>

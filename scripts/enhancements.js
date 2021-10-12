@@ -110,11 +110,11 @@ function changeLink() {
             link.textContent = "About Us";
             break;
         case 1:
-            link.href = "jobs.html";
+            link.href = "jobs.php";
             link.textContent = "Check Out Job Openings Now!";
             break;
         case 2:
-            link.href = "apply.html"
+            link.href = "apply.php"
             link.textContent = "Start Your Journey With Us Today!";
     }
 }
