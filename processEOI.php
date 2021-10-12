@@ -18,6 +18,40 @@
             return $data;
         }
 
+        function getAge($dateOfBirth) {
+            $dayToday = intval(date("d")); // dd format
+            $monthToday = intval(date("m")); // mm format
+            $yearToday = intval(date("Y"));  // yyyy format
+
+            $birthArray = explode("/", $dateOfBirth);
+            $dayOfBirth = intval($birthArray[0]);
+            $monthOfBirth = intval($birthArray[1]);
+            $yearOfBirth = intval($birthArray[2]);
+
+            if ($monthToday == $monthOfBirth) {
+                // Birthday this year has happened.
+                if ($dayOfBirth <= $dayToday) {
+                    $age = $yearToday - $yearOfBirth;
+                }
+        
+                // Birthday this year has not happened yet.
+                else if ($dayOfBirth > $dayToday) {
+                    $age = $yearToday - $yearOfBirth - 1;
+                }
+            }
+        
+            // Birthday this year has happened.
+            else if ($monthOfBirth <= $monthToday) {
+                $age = $yearToday - $yearOfBirth;
+            }
+        
+            // Birthday this year has not happened yet.
+            else if ($monthOfBirth > $monthToday) {
+                $age = $yearToday - $yearOfBirth - 1;
+            }
+            return $age;
+        }
+
         function validateForm() {
             $valid = true;
 
@@ -56,6 +90,28 @@
             else {
                 $valid = false;
                 echo "<p>no last name.</p>";
+            }
+
+            if (isset($_POST["dob"]) && $_POST["dob"] != "") {
+                $dateOfBirth = $_POST["dob"];
+                $dateOfBirth = sanitise_input($dateOfBirth);
+                $dateOfBirthRE = "/^([0]?[1-9]|[12][0-9]|[3][01])\/([0]?[1-9]|[1][0-2])\/[0-9]{4}$/";
+
+                if (!preg_match($dateOfBirthRE, $dateOfBirth)) {
+                    $valid = false;
+                    echo "<p>Wrong dob format.</p>";
+                }
+                else {
+                    $age = getAge($dateOfBirth);
+                    if ($age < 15 || $age > 80) {
+                        $valid = false;
+                        echo"<p>Age not in range.</p>";
+                    }
+                }
+            }
+            else {
+                $valid = false;
+                echo"<p>enter age.</p>";
             }
         }
 
