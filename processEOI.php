@@ -111,7 +111,6 @@
             }
             else {
                 $valid = false;
-                echo "<p>Please enter a job reference number.</p>";
             }
 
             // Check first name.
@@ -120,26 +119,23 @@
 
                 if (!preg_match("/^[A-Za-z]{1,20}$/", $firstName)) {
                     $valid = false;
-                    echo "<p>first name error.</p>";
                 }
             }
             else {
-                echo "<p>Please enter a first name.</p>";
                 $valid = false;
+                header("location: apply.php");
             }
 
             // Check last name.
             if (isset($_POST["last_name"]) && $_POST["first_name"] != "") {
                 $lastName = sanitise_input($_POST["last_name"]);
 
-                if (!preg_match("/^[A-Za-z]{1,20}$/", $lastName)) {
+                if (!preg_match("/^[A-Za-z-]{1,20}$/", $lastName)) {
                     $valid = false;
-                    echo "<p>last name error</p>";
                 }
             }
             else {
                 $valid = false;
-                echo "<p>no last name.</p>";
             }
 
             // Check age.
@@ -149,25 +145,21 @@
 
                 if (!preg_match($dateOfBirthRE, $dateOfBirth)) {
                     $valid = false;
-                    echo "<p>Wrong dob format.</p>";
                 }
                 else {
                     $age = getAge($dateOfBirth);
                     if ($age < 15 || $age > 80) {
                         $valid = false;
-                        echo"<p>Age not in range.</p>";
                     }
                 }
             }
             else {
                 $valid = false;
-                echo"<p>enter age.</p>";
             }
 
             // Check gender.
             if (!isset($_POST["gender"])) {
                 $valid = false;
-                echo"<p>Select gender.</p>";
             }
 
             // Check street address.
@@ -176,12 +168,10 @@
                 // Not needed because max length is 40 in html but whatever.
                 if (strlen($streetAddress) > 40) {
                     $valid = false;
-                    echo "<p>Street address too long.</p>";
                 }
             }
             else {
                 $valid = false;
-                echo "<p> Enter street address</p>";
             }
 
             // Check suburb.
@@ -194,7 +184,6 @@
             }
             else {
                 $valid = false;
-                echo"<p>Enter suburb</p>";
             }
 
             // Check state.
@@ -203,7 +192,6 @@
             }
             else {
                 $valid = false;
-                echo"<p>select state</p>";
             }
 
             //Check postcode.
@@ -211,20 +199,17 @@
                 $postcode = sanitise_input($_POST["postcode"]);
                 if (!preg_match("/^[0-9]{4}$/", $postcode)) {
                     $valid = false;
-                    echo"<p>postcode in wrong format.</p>";
                 }
                 // A state has also been entered.
                 else if (isset($_POST["state"]) && $_POST["state"] != "") {
                     $state = sanitise_input($_POST["state"]);
                     if (!checkPostcode($postcode, $state)) {
                         $valid = false;
-                        echo"<p>postcode and state do not match</p>";
                     }
                 }
             }
             else {
                 $valid = false;
-                echo "<p> enter postcode </p>";
             }
 
             // Check email
@@ -233,12 +218,10 @@
 
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $valid = false;
-                    echo"<p>email in wrong format.</p>";
                 }
             }
             else {
                 $valid = false;
-                echo"<p>enter email</p>";
             }
 
             // Check phone number
@@ -247,12 +230,10 @@
 
                 if (!preg_match("/^[0-9' ']{8,12}$/", $phoneNumber)) {
                     $valid = false;
-                    echo"<p>wrong phone number format.</p>";
                 }
             }
             else {
                 $valid = false;
-                echo"<p>enter phone number.</p>";
             }
 
             // Check if other skills textbox empty if other skills checkbox checked.
@@ -266,10 +247,10 @@
                     }
                     else {
                         $valid = false;
-                        echo"<p>enter stuff in textbox.</p>";
                     }
                 }
             }
+            echo (int)$valid;
         }
 
         validateForm();
