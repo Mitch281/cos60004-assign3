@@ -70,7 +70,7 @@ function startTimer() {
 
     if (timeLeft == 0) {
         clearInterval(tickInterval);
-        window.location = "index.html";
+        window.location = "index.php";
     }
 
     timeLeft--;
