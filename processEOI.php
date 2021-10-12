@@ -250,7 +250,6 @@
                     }
                 }
             }
-            echo (int)$valid;
         }
 
         validateForm();
