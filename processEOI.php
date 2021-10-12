@@ -52,6 +52,56 @@
             return $age;
         }
 
+        // Checks if the postcode entered matches the corresponding state selected.
+        function checkPostcode($postcode, $state) {
+            $validPostcode = true;
+
+            $firstNumber = $postcode[0];
+            switch($state) {
+                case "VIC":
+                    if ($firstNumber != "3" && $firstNumber != "8") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "NSW":
+                    if ($firstNumber != "1" && $firstNumber != "2") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "QLD":
+                    if ($firstNumber != "4" && $firstNumber != "9") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "NT":
+                    if ($firstNumber != "0") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "WA":
+                    if ($firstNumber != "6") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "SA":
+                    if ($firstNumber != "5") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "TAS":
+                    if ($firstNumber != "7") {
+                        $validPostcode = false;
+                    }
+                    break;
+                case "ACT":
+                    if ($firstNumber != "0") {
+                        $validPostcode = false;
+                    }
+                    break;
+                }
+            return $validPostcode;
+        }
+
         function validateForm() {
             $valid = true;
 
@@ -154,6 +204,27 @@
             else {
                 $valid = false;
                 echo"<p>select state</p>";
+            }
+
+            //Check postcode.
+            if (isset($_POST["postcode"]) && $_POST["postcode"] != "") {
+                $postcode = sanitise_input($_POST["postcode"]);
+                if (!preg_match("/^[0-9]{4}$/", $postcode)) {
+                    $valid = false;
+                    echo"<p>postcode in wrong format.</p>";
+                }
+                // A state has also been entered.
+                else if (isset($_POST["state"]) && $_POST["state"] != "") {
+                    $state = sanitise_input($_POST["state"]);
+                    if (!checkPostcode($postcode, $state)) {
+                        $valid = false;
+                        echo"<p>postcode and state do not match</p>";
+                    }
+                }
+            }
+            else {
+                $valid = false;
+                echo "<p> enter postcode </p>";
             }
         }
 
