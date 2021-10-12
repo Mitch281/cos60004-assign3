@@ -226,6 +226,36 @@
                 $valid = false;
                 echo "<p> enter postcode </p>";
             }
+
+            // Check email
+            if (isset($_POST["email"]) && $_POST["email"] != "") {
+                $email = sanitise_input($_POST["email"]);
+
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $valid = false;
+                    echo"<p>email in wrong format.</p>";
+                }
+            }
+            else {
+                $valid = false;
+                echo"<p>enter email</p>";
+            }
+
+            // Check if other skills textbox empty if other skills checkbox checked.
+            if (isset($_POST["skills"])) {
+                $skills = $_POST["skills"]; // Array of skill checkboxes ticked.
+
+                // If other_skills checkbox was ticked, then check if other skills text box has something written.
+                if (in_array("other_skills", $skills)) {
+                    if (isset($_POST["other_skills"]) && $_POST["other_skills"] != "") {
+                        $otherSkills = sanitise_input($_POST["other_skills"]);
+                    }
+                    else {
+                        $valid = false;
+                        echo"<p>enter stuff in textbox.</p>";
+                    }
+                }
+            }
         }
 
         validateForm();
