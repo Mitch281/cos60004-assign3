@@ -297,21 +297,22 @@
                 $otherSkills = sanitise_input($_POST["other_skills"]);
                 $status = "New";
 
-                echo "<p>eoiNumber: $eoiNumber<br> 
-                jobreferencenumver: $jobReferenceNumber<br> 
-                firstname: $firstName<br> 
-                lastname: $lastName<br>  
-                street address: $streetAddress <br> 
-                suburb: $suburb <br> 
-                state: $state <br> 
-                postcode: $postcode <br>
-                email: $email <br>
-                phone number: $phoneNumber <br> 
-                skills: $skills <br> 
-                other skills: $otherSkills <br> 
-                status: $status <br>
-                </p>";
+                $query = "insert into $sqlTable values 
+                ('$eoiNumber', '$jobReferenceNumber', '$firstName', '$lastName', '$streetAddress', '$suburb',
+                '$state', '$postcode', '$email', '$phoneNumber', '$skills', '$otherSkills', '$status')";
+
+                $result = mysqli_query($connection, $query);
+
+                if (!$result) {
+                    echo"<p>Oh no! Something went wrong!.</p>";
+                }
+
+                else {
+                    echo "<p>Success!</p>";
+                }
             }
+
+            mysqli_close($connection);
         }
 
         validateForm();
