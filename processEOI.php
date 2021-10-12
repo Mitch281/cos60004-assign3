@@ -108,6 +108,11 @@
             // Check job reference number.
             if (isset($_POST["reference_number"]) && $_POST["reference_number"] != "") {
                 $jobReferenceNumber = sanitise_input($_POST["reference_number"]);
+                $jobReferenceNumberRE = "/^[A-Z]{1}[0-9]{4}$/";
+
+                if (!preg_match($jobReferenceNumberRE, $jobReferenceNumber)) {
+                    $valid = false;
+                }
             }
             else {
                 $valid = false;
@@ -242,16 +247,15 @@
 
                 // If other_skills checkbox was ticked, then check if other skills text box has something written.
                 if (in_array("other_skills", $skills)) {
-                    if (isset($_POST["other_skills"]) && $_POST["other_skills"] != "") {
-                        $otherSkills = sanitise_input($_POST["other_skills"]);
-                    }
-                    else {
+                    if (!isset($_POST["other_skills"]) || $_POST["other_skills"] == "") {
                         $valid = false;
                     }
                 }
             }
+            
+            return $valid;
         }
 
-        validateForm();
+        echo (int)validateForm();
     ?>
 </body>
