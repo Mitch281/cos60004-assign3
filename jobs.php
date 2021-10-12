@@ -61,7 +61,7 @@
             <li>Practical experience in statistical analysis through the use of statistical packages including Excel,
                 SPSS, and SAS</li>
         </ul>
-        <a class="apply_button" href="apply.html">Apply</a>
+        <a class="apply_button" href="apply.php">Apply</a>
         <p>Taken from<a
                 href="https://business.linkedin.com/talent-solutions/resources/talent-engagement/job-descriptions/data-analyst">&nbsp;linkedin</a>
         </p>
@@ -104,7 +104,7 @@
             <li>Ability to work successfully in both individual and team settings</li>
             <li>Ability to think like a hacker in order to stay one step ahead</li>
         </ul>
-        <a class="apply_button" href="apply.html">Apply</a>
+        <a class="apply_button" href="apply.php">Apply</a>
         <p>Taken from<a
                 href=https://business.linkedin.com/talent-solutions/resources/talent-engagement/job-descriptions/cybersecurity-specialist>&nbsp;linkedin</a>
         </p>

@@ -19,15 +19,15 @@
     ?>
     <h2 id="form_header">Application Form</h2>
     <p id="timer"></p>
-    <form id="job_form" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php" >
+    <form id="job_form" method="post" action="processEOI.php" novalidate="novalidate">
         <p><label for="reference_number">Job Reference Number</label>
             <input type="text" name="reference_number" id="reference_number" required="required" pattern="[^' ']{5}" />
         </p>
         <p><label for="first_name">First Name</label>
-            <input type="text" name="first_name" id="first_name" required="required" pattern="[A-Za-z^' ']{1,20}" />
+            <input type="text" name="first_name" id="first_name" required="required" pattern="[A-Za-z]{1,20}" />
         </p>
         <p><label for="last_name">Last Name</label>
-            <input type="text" name="last_name" id="last_name" required="required" pattern="[A-Za-z^' ']{1,20}" />
+            <input type="text" name="last_name" id="last_name" required="required" pattern="[A-Za-z]{1,20}" />
         </p>
         <p><label for="dob">Date of Birth</label>
             <input type="text" name="dob" id="dob" required="required" placeholder="dd/mm/yyyy" />
