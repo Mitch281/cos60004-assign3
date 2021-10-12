@@ -55,18 +55,18 @@
         function validateForm() {
             $valid = true;
 
-            if (isset($_POST["reference_number"])) {
-                $jobReferenceNumber = $_POST["reference_number"];
-                $jobReferenceNumber = sanitise_input($jobReferenceNumber);
+            // Check job reference number.
+            if (isset($_POST["reference_number"]) && $_POST["reference_number"] != "") {
+                $jobReferenceNumber = sanitise_input($_POST["reference_number"]);
             }
             else {
                 $valid = false;
                 echo "<p>Please enter a job reference number.</p>";
             }
 
+            // Check first name.
             if (isset($_POST["first_name"]) && $_POST["first_name"] != "") {
-                $firstName = $_POST["first_name"];
-                $firstName = sanitise_input($firstName); 
+                $firstName = sanitise_input($_POST["first_name"]); 
 
                 if (!preg_match("/^[A-Za-z]{1,20}$/", $firstName)) {
                     $valid = false;
@@ -78,9 +78,9 @@
                 $valid = false;
             }
 
+            // Check last name.
             if (isset($_POST["last_name"]) && $_POST["first_name"] != "") {
-                $lastName = $_POST["last_name"];
-                $lastName = sanitise_input($lastName);
+                $lastName = sanitise_input($_POST["last_name"]);
 
                 if (!preg_match("/^[A-Za-z]{1,20}$/", $lastName)) {
                     $valid = false;
@@ -92,9 +92,9 @@
                 echo "<p>no last name.</p>";
             }
 
+            // Check age.
             if (isset($_POST["dob"]) && $_POST["dob"] != "") {
-                $dateOfBirth = $_POST["dob"];
-                $dateOfBirth = sanitise_input($dateOfBirth);
+                $dateOfBirth = sanitise_input($_POST["dob"]);
                 $dateOfBirthRE = "/^([0]?[1-9]|[12][0-9]|[3][01])\/([0]?[1-9]|[1][0-2])\/[0-9]{4}$/";
 
                 if (!preg_match($dateOfBirthRE, $dateOfBirth)) {
@@ -112,6 +112,48 @@
             else {
                 $valid = false;
                 echo"<p>enter age.</p>";
+            }
+
+            // Check gender.
+            if (!isset($_POST["gender"])) {
+                $valid = false;
+                echo"<p>Select gender.</p>";
+            }
+
+            // Check street address.
+            if (isset($_POST["street_address"]) && $_POST["street_address"] != "") {
+                $streetAddress = sanitise_input($_POST["street_address"]);
+                // Not needed because max length is 40 in html but whatever.
+                if (strlen($streetAddress) > 40) {
+                    $valid = false;
+                    echo "<p>Street address too long.</p>";
+                }
+            }
+            else {
+                $valid = false;
+                echo "<p> Enter street address</p>";
+            }
+
+            // Check suburb.
+            if (isset($_POST["suburb"]) && $_POST["suburb"] != "") {
+                $suburb = sanitise_input($_POST["suburb"]);
+                // Noy needed beause max length is 40 in html but whatever.
+                if (strlen($suburb) > 40) {
+                    $valid = false;
+                }
+            }
+            else {
+                $valid = false;
+                echo"<p>Enter suburb</p>";
+            }
+
+            // Check state.
+            if (isset($_POST["state"]) && $_POST["state"] != "") {
+                $state = sanitise_input($_POST["state"]);
+            }
+            else {
+                $valid = false;
+                echo"<p>select state</p>";
             }
         }
 
