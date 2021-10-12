@@ -120,53 +120,51 @@ function getAge(dateOfBirth) {
 var numTimesSubmitted = 0;
 function validateForm() {
     var checkServerSideValidation = true;
-    if (!checkServerSideValidation) {
-        numTimesSubmitted++;
-        if (numTimesSubmitted >= 1) {
-            resetErrorMessages();
-        }
-
-        var valid = true;
-        var dateOfBirth = document.getElementById("dob").value.trim();
-        var postcode = document.getElementById("postcode").value.trim();
-        var state = document.getElementById("state").value;
-        var otherSkills = document.getElementById("other_skills").value;
-
-        var dateOfBirthRE = /^([0]?[1-9]|[12][0-9]|[3][01])\/([0]?[1-9]|[1][0-2])\/[0-9]{4}$/;
-
-        if (!dateOfBirth.match(dateOfBirthRE)) {
-            valid = false;
-            document.getElementById("invalid_dob").textContent = "Please enter the date of birth in dd/mm/yyyy format.";
-        }
-
-        // Only compute the age if it is possible (i.e. date of birth in the appropriate format).
-        else {
-            var age = getAge(dateOfBirth);
-            if (age < 15 || age > 80) {
-                valid = false;
-                document.getElementById("invalid_age").textContent = "Your age must be between 15 and 80.";
-            }
-        }
-
-        if (checkPostcode(postcode, state) != "") {
-            valid = false;
-            document.getElementById("invalid_postcode").textContent = checkPostcode(postcode, state);
-        }
-
-        if (isOtherSkillsChecked()) {
-            if (otherSkills == "") {
-                valid = false;
-                document.getElementById("empty_skills").textContent = "You have stated that you have other skills.\
-                Please specify these skills in the textbox.";
-            }
-        }
-
-        if (valid) {
-            storePersonalDetails(dateOfBirth, state, postcode);
-        }
-
-        return valid;
+    numTimesSubmitted++;
+    if (numTimesSubmitted >= 1) {
+        resetErrorMessages();
     }
+
+    var valid = true;
+    var dateOfBirth = document.getElementById("dob").value.trim();
+    var postcode = document.getElementById("postcode").value.trim();
+    var state = document.getElementById("state").value;
+    var otherSkills = document.getElementById("other_skills").value;
+
+    var dateOfBirthRE = /^([0]?[1-9]|[12][0-9]|[3][01])\/([0]?[1-9]|[1][0-2])\/[0-9]{4}$/;
+
+    if (!dateOfBirth.match(dateOfBirthRE)) {
+        valid = false;
+        document.getElementById("invalid_dob").textContent = "Please enter the date of birth in dd/mm/yyyy format.";
+    }
+
+    // Only compute the age if it is possible (i.e. date of birth in the appropriate format).
+    else {
+        var age = getAge(dateOfBirth);
+        if (age < 15 || age > 80) {
+            valid = false;
+            document.getElementById("invalid_age").textContent = "Your age must be between 15 and 80.";
+        }
+    }
+
+    if (checkPostcode(postcode, state) != "") {
+        valid = false;
+        document.getElementById("invalid_postcode").textContent = checkPostcode(postcode, state);
+    }
+
+    if (isOtherSkillsChecked()) {
+        if (otherSkills == "") {
+            valid = false;
+            document.getElementById("empty_skills").textContent = "You have stated that you have other skills.\
+            Please specify these skills in the textbox.";
+        }
+    }
+
+    if (valid) {
+        storePersonalDetails(dateOfBirth, state, postcode);
+    }
+
+    return valid;
 }
 
 // Gets the job reference number from local storage and displays it as read only.

@@ -257,6 +257,7 @@
         }
 
         function sendDataToEOI() {
+            //TODO: Create eoi table if it does not already exist.
             require_once("settings.php");
             $connection = @mysqli_connect($host, $user, $pwd, $sql_db);
 
@@ -294,6 +295,7 @@
                     $skills = null;
                 }  
 
+                // TODO: Check if other skills is sending null or empty string when it is empty. Is there a difference?
                 $otherSkills = sanitise_input($_POST["other_skills"]);
                 $status = "New";
 
@@ -307,12 +309,16 @@
                     echo"<p>Oh no! Something went wrong!.</p>";
                 }
 
+                // Display confirmation message.
                 else {
-                    echo "<p>Success!</p>";
+                    echo "<h1>Job Application Confirmation</h1>";
+                    $currentEoiNumber = mysqli_insert_id($connection);
+                    echo "<p>Congratulations, your job application was received. Your expression of interest number is
+                    $currentEoiNumber</p>";
                 }
-            }
 
             mysqli_close($connection);
+            }
         }
 
         validateForm();
