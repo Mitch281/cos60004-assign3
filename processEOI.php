@@ -241,6 +241,20 @@
                 echo"<p>enter email</p>";
             }
 
+            // Check phone number
+            if (isset($_POST["phone_number"]) && $_POST["phone_number"] != "") {
+                $phoneNumber = sanitise_input($_POST["phone_number"]);
+
+                if (!preg_match("/^[0-9' ']{8,12}$/", $phoneNumber)) {
+                    $valid = false;
+                    echo"<p>wrong phone number format.</p>";
+                }
+            }
+            else {
+                $valid = false;
+                echo"<p>enter phone number.</p>";
+            }
+
             // Check if other skills textbox empty if other skills checkbox checked.
             if (isset($_POST["skills"])) {
                 $skills = $_POST["skills"]; // Array of skill checkboxes ticked.
