@@ -69,6 +69,9 @@
             <input type="text" name="email" id="email" required="required" 
             pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"/>
         </p>
+        <p><label for="phone_number">Phone Number</label>
+            <input type="text" name="phone_number" id="phone_number" required="required" pattern=[0-9' ']{8,12}>
+        </p>
         <fieldset id="skills">
             <legend>Skills</legend>
             <label><input type="checkbox" name="skills[]" value="technical_writing" />Technical Writing</label>
