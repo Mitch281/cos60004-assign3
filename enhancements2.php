@@ -50,6 +50,7 @@
             getButtonClicked function.
         </li>
     </ul>
+    <hr />
     <?php
         include_once("footer.inc");
     ?>
