@@ -7,6 +7,7 @@
     <meta name="keywords" content="apply, vacancies, job, career" />
     <meta name="author" content="Mitchell Anton" />
     <title>Form confirmation | Anton & Turing Technologies</title>
+    <link href="styles/style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -258,6 +259,7 @@
 
         function sendDataToEOI() {
             //TODO: Create eoi table if it does not already exist.
+            //TODO: Check if we are meant to turn server side validation back on.
             require_once("settings.php");
             $connection = @mysqli_connect($host, $user, $pwd, $sql_db);
 
@@ -285,7 +287,7 @@
                     $skills = "";
                     // Put the skills checked into a string $skills.
                     for ($i = 0; $i < count($_POST["skills"]); $i++) {
-                        $skills .= $_POST["skills"][$i];
+                        $skills .= sanitise_input($_POST["skills"][$i]);
                         if ($i != count($_POST["skills"]) - 1) {
                             $skills .= ",";
                         }
@@ -295,7 +297,7 @@
                     $skills = null;
                 }  
 
-                // TODO: Check if other skills is sending null or empty string when it is empty. Is there a difference?
+                // Note: If nothing is entered in other skills, then it is an empty string (not null).
                 $otherSkills = sanitise_input($_POST["other_skills"]);
                 $status = "New";
 
@@ -312,9 +314,9 @@
                 // Display confirmation message.
                 else {
                     echo "<h1>Job Application Confirmation</h1>";
-                    $currentEoiNumber = mysqli_insert_id($connection);
-                    echo "<p>Congratulations, your job application was received. Your expression of interest number is
-                    $currentEoiNumber</p>";
+                    $currentEoiNumber = mysqli_insert_id($connection); // Last entered eoiNumber.
+                    echo "<h2>Congratulations, your job application was received. Your expression of interest number is
+                    $currentEoiNumber.</h2>";
                 }
 
             mysqli_close($connection);
