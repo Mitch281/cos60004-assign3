@@ -261,14 +261,10 @@
             //TODO: Create eoi table if it does not already exist.
             //TODO: Check if we are meant to turn server side validation back on.
             require_once("settings.php");
-            $connection = @mysqli_connect($host, $user, $pwd, $sql_db);
-
-            if (!$connection) {
-                echo "<p>Database connection failure.</p>";
-            }
+            $connection = @mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
 
             // All of the data is valid and our connection is working. Thus, we can proceed putting data into database.
-            else if (validateForm()) {
+            if (validateForm()) {
                 $sqlTable = "eoi";
 
                 $eoiNumber = null;
