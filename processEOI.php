@@ -297,6 +297,32 @@
                 $otherSkills = sanitise_input($_POST["other_skills"]);
                 $status = "New";
 
+                // Create eoi table if it is not already created
+                if (!mysqli_query($connection, "describe $sqlTable")) {
+                    $createQuery = "create table eoi (
+                        eoiNumber int not null auto_increment primary key,
+                        JobReferenceNumber char(5) not null,
+                        FirstName varchar(20) not null,
+                        LastName varchar(20) not null,
+                        StreetAddress varchar(40) not null,
+                        Suburb varchar(40) not null,
+                        StateLocation varchar(3) not null,
+                        Postcode char(4) not null,
+                        EmailAddress varchar(30) not null,
+                        PhoneNumber varchar(12) not null,
+                        Skills varchar(100),
+                        OtherSkills varchar(200),
+                        Status varchar(7) not null default 'New'
+                    )";
+
+                    $result = mysqli_query($connection, $createQuery);
+
+                    if (!$result) {
+                        echo mysqli_error($connection);
+                        echo"<p>Oh no! Something went wrong!.</p>";
+                    }
+                }
+
                 $query = "insert into $sqlTable values 
                 ('$eoiNumber', '$jobReferenceNumber', '$firstName', '$lastName', '$streetAddress', '$suburb',
                 '$state', '$postcode', '$email', '$phoneNumber', '$skills', '$otherSkills', '$status')";
