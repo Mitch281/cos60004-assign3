@@ -110,7 +110,7 @@
             // Check job reference number.
             if (isset($_POST["reference_number"]) && $_POST["reference_number"] != "") {
                 $jobReferenceNumber = sanitise_input($_POST["reference_number"]);
-                $jobReferenceNumberRE = "[a-zA-Z0-9]{5}";
+                $jobReferenceNumberRE = "/^[a-zA-Z0-9]{5}$/";
 
                 if (!preg_match($jobReferenceNumberRE, $jobReferenceNumber)) {
                     $valid = false;
