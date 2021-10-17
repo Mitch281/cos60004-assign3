@@ -26,7 +26,7 @@
         <legend>Get Job Applications by Job Reference Number</legend>
         <form id="get_eois_given_ref" method="get" action="process-manager-request.php">
             <label for="reference_number">Job Reference Number</label>
-            <input type="text" name="reference_number" id="reference_number" required="required" pattern="[a-zA-Z0-9]{5}" />
+            <input type="text" name="reference_number" id="reference_number" pattern="[a-zA-Z0-9]{5}" />
             <input class="form_action" type="submit" name="get_eois_given_ref" value="Get Applications">
         </form>
     </fieldset>
