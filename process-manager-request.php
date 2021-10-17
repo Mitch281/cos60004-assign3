@@ -16,9 +16,9 @@
         require_once("settings.php");
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
-
-        // The manager pressed the button to get all form applications.
-        if (isset($_GET["get_all_applications"])) {
+        function getAllApplications() {
+            global $connection;
+            global $sqlTable;
             $query = "select * from eoi";
             $result = mysqli_query($connection, $query);
 
@@ -26,7 +26,7 @@
                 echo "<p>There are no job applications yet.</p>";
             }
             else {
-                echo "<table class='manager-request'>\n";
+                echo "<table class='manager_request'>\n";
 
                 // Table headers
                 echo "<tr>\n"
@@ -42,7 +42,7 @@
                     . "<th>Phone Number</th>\n"
                     . "<th>Skills</th>\n"
                     . "<th>Other Skills</th>\n"
-                    . "<th>Status</th>\n";
+                    . "<th>Statusth>\n";
 
                 // Table content.
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -64,6 +64,11 @@
                 echo "</table>\n";
                 mysqli_free_result($result);
             }
+        }
+
+        // The manager pressed the button to get all form applications.
+        if (isset($_GET["get_all_applications"])) {
+            getAllApplications();
         }
     ?>
 </body>
