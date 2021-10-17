@@ -13,6 +13,7 @@
 <body>
     <?php
         // TODO: Style table.
+        // TODO: Check if we need data validation for manager requests???
         require_once("settings.php");
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
@@ -81,13 +82,8 @@
             $valid = true;
 
             // A job reference number has been entered.
-            if (isset($_GET["reference_number"]) && $_GET["reference_number"] != "") {
+            if (isset($_GET["reference_number"])) {
                 $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
-                $jobReferenceNumberRE = "/^[a-zA-Z0-9]{5}$/";
-
-                if (!preg_match($jobReferenceNumberRE, $jobReferenceNumber)) {
-                    $valid = false;
-                }
             }
             else {
                 $valid = false;
