@@ -42,7 +42,7 @@
                     . "<th>Phone Number</th>\n"
                     . "<th>Skills</th>\n"
                     . "<th>Other Skills</th>\n"
-                    . "<th>Statusth>\n";
+                    . "<th>Status</th>\n";
 
                 // Table content.
                 while ($row = mysqli_fetch_assoc($result)) {

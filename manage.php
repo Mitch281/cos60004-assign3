@@ -18,6 +18,9 @@
     <form id="get_all_applications" method="get" action="process-manager-request.php">
         <input class="form_action" type="submit" name="get_all_applications" value="Get All Applications">
     </form>
+    <form id="get_eois_given_ref" method="get" action="process-manager-request.php">
+        <input class="form_action" type="submit" name="get_eois_given_ref" value="Get Applications">
+    </form>
     <hr />
     <?php
         include_once("footer.inc");
