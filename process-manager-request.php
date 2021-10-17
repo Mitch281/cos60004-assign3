@@ -16,13 +16,21 @@
         require_once("settings.php");
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
+
+        function sanitise_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
         function getAllApplications() {
             global $connection;
             global $sqlTable;
             $query = "select * from eoi";
             $result = mysqli_query($connection, $query);
 
-            if (mysqli_num_rows($result) == 0) {
+            if (!$result || mysqli_num_rows($result) == 0) {
                 echo "<p>There are no job applications yet.</p>";
             }
             else {
@@ -66,9 +74,82 @@
             }
         }
 
+        // Get all of the eoi's corresponding to the entered job reference number.
+        function getEOIsGivenRef() {
+            global $connection;
+            global $sqlTable;
+            $valid = true;
+
+            // A job reference number has been entered.
+            if (isset($_GET["reference_number"]) && $_GET["reference_number"] != "") {
+                $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
+                $jobReferenceNumberRE = "/^[a-zA-Z0-9]{5}$/";
+
+                if (!preg_match($jobReferenceNumberRE, $jobReferenceNumber)) {
+                    $valid = false;
+                }
+            }
+            else {
+                $valid = false;
+            }
+
+            if ($valid) {
+                // DON'T FORGET SINGLE QUOTATION MARKS!
+                $query = "select * from eoi where JobReferenceNumber = '$jobReferenceNumber'";
+                $result = mysqli_query($connection, $query);
+
+                // Note: !$result is for when query is invalid.
+                if (!$result || mysqli_num_rows($result) == 0) {
+                    echo "<p>There are no job applications for this position yet or this job does not exist.</p>";
+                }
+                else {
+                    echo "<table class='manager_request'>\n";
+
+                    // Table headers
+                    echo "<tr>\n"
+                        . "<th>eoi Number</th>\n"
+                        . "<th>Job Reference Number</th>\n"
+                        . "<th>First Name</th>\n"
+                        . "<th>Last Name</th>\n"
+                        . "<th>Street Address</th>\n"
+                        . "<th>Suburb</th>\n"
+                        . "<th>State</th>\n"
+                        . "<th>Postcode</th>\n"
+                        . "<th>Email</th>\n"
+                        . "<th>Phone Number</th>\n"
+                        . "<th>Skills</th>\n"
+                        . "<th>Other Skills</th>\n"
+                        . "<th>Status</th>\n";
+    
+                    // Table content.
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>\n"
+                            . "<th>" . $row["eoiNumber"] . "</th>\n"
+                            . "<th>" . $row["JobReferenceNumber"] . "</th>\n"
+                            . "<th>" . $row["FirstName"] . "</th>\n"
+                            . "<th>" . $row["LastName"] . "</th>\n"
+                            . "<th>" . $row["StreetAddress"] . "</th>\n"
+                            . "<th>" . $row["Suburb"] . "</th>\n"
+                            . "<th>" . $row["StateLocation"] . "</th>\n"
+                            . "<th>" . $row["Postcode"] . "</th>\n"
+                            . "<th>" . $row["EmailAddress"] . "</th>\n"
+                            . "<th>" . $row["PhoneNumber"] . "</th>\n"
+                            . "<th>" . $row["Skills"] . "</th>\n"
+                            . "<th>" . $row["OtherSkills"] . "</th>\n"
+                            . "<th>" . $row["Status"] . "</th>\n";
+                    }
+                    echo "</table>\n";
+                    mysqli_free_result($result);
+                }
+            }
+        }
+
         // The manager pressed the button to get all form applications.
         if (isset($_GET["get_all_applications"])) {
             getAllApplications();
+        }
+        if (isset($_GET["get_eois_given_ref"])) {
+            getEOIsGivenRef();
         }
     ?>
 </body>
