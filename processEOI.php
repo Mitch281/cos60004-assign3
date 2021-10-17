@@ -258,7 +258,6 @@
         }
 
         function sendDataToEOI() {
-            //TODO: Create eoi table if it does not already exist.
             //TODO: Check if we are meant to turn server side validation back on.
             require_once("settings.php");
             $connection = @mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
