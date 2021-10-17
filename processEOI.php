@@ -267,7 +267,7 @@
                 echo "<p>Database connection failure.</p>";
             }
 
-            // All of the data is valid. Thus, we can proceed putting data into database.
+            // All of the data is valid and our connection is working. Thus, we can proceed putting data into database.
             else if (validateForm()) {
                 $sqlTable = "eoi";
 
@@ -319,7 +319,7 @@
                     $currentEoiNumber.</h2>";
                 }
 
-            mysqli_close($connection);
+                mysqli_close($connection);
             }
         }
 
