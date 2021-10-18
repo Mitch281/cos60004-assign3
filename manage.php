@@ -16,6 +16,11 @@
 
 <body>
     <?php
+        // Prevents anyone from entering this page directly.
+        if (!isset($_SESSION["username"])) {
+            header("location: manager-login.php");
+        }
+
         $page = "managerPage";
         include_once("menu.inc"); 
         
