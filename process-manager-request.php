@@ -199,15 +199,23 @@
         if (isset($_GET["get_all_applications"])) {
             getAllApplications();
         }
+        
+        // The manager pressed the button to get eoi's after giving a job reference number.
         if (isset($_GET["get_eois_given_ref"])) {
             getEOIsGivenRef();
         }
+
+        // The manager pressed the button to get eoi's after giving first name and/or last name.
         if (isset($_GET["get_eois_given_name"])) {
             getEOIsGivenName();
         }
+
+        // The manager pressed the button to delete job applications after giving the job reference number.
         if (isset($_POST["delete_eois_given_ref"])) {
             deleteEOIsGivenRef();
         }
+
+        // The manager wants to change status of a certain job application.
         if (isset($_POST["change_status_given_eoi_number"])) {
             changeStatusGivenEOINumber();
         }
