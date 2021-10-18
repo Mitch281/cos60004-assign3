@@ -5,8 +5,9 @@
         <a class="nav_bar" href="jobs.php" <?php echo ($page=="jobDescriptions")? "id='highlighted'" : "" ; ?> >Job Descriptions</a> |
         <a class="nav_bar" href="apply.php" <?php echo ($page=="applyPage")? "id='highlighted'" : "" ; ?> >Apply for a Job</a> |
         <a class="nav_bar" href="about.php" <?php echo ($page=="aboutPage")? "id='highlighted'" : "" ; ?> >About Me</a> |
+        <a class="nav_bar" href="manager-login.php" <?php echo ($page=="managerPage")? "id='highlighted'" : "" ; ?> > Manage</a> |
         <a class="nav_bar" href="enhancements.php" <?php echo ($page=="enhancements1Page")? "id='highlighted'" : "" ; ?> >Enhancements</a> |
         <a class="nav_bar" href="enhancements2.php" <?php echo ($page=="enhancements2Page")? "id='highlighted'" : "" ; ?> >Enhancements2</a> |
-        <a class="nav_bar" href="manager-login.php" <?php echo ($page=="managerPage")? "id='highlighted'" : "" ; ?> > Manage</a>
+        <a class="nav_bar" href="phpenhancements.php" <?php echo ($page=="phpEnhancementsPage")? "id='highlighted'" : "" ; ?> >php Enhancements</a>
     </nav>
 </section>

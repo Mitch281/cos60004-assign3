@@ -36,7 +36,7 @@ p:not(#timer):not(#manager_login form p):not(#user_logged_in), li, dt, dd, stron
 
 #main_menu nav {
     position: absolute;
-    left: 28%;
+    left: 22%;
     top: 47%;
 }
 
