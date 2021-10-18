@@ -86,7 +86,7 @@
         function getEOIsGivenRef() {
             global $connection;
             global $sqlTable;
-            $jobReferenceNumber = $_GET["reference_number"];
+            $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
 
             // DON'T FORGET SINGLE QUOTATION MARKS!
             $query = "select * from eoi where JobReferenceNumber = '$jobReferenceNumber'";
@@ -106,8 +106,8 @@
             global $connection;
             global $sqlTable;
 
-            $firstName = $_GET["first_name"];
-            $lastName = $_GET["last_name"];
+            $firstName = sanitise_input($_GET["first_name"]);
+            $lastName = sanitise_input($_GET["last_name"]);
 
             // Both first names and last names empty or both first names and last names filled.
             if (($firstName == "" && $lastName == "") || ($firstName != "" && $lastName != "")) {
@@ -140,7 +140,7 @@
             global $connection;
             global $sqlTable;
 
-            $jobReferenceNumber = $_POST["job_reference_number"];
+            $jobReferenceNumber = sanitise_input($_POST["job_reference_number"]);
 
             $query = "delete from eoi where JobReferenceNumber = '$jobReferenceNumber'";
             $result = mysqli_query($connection, $query);
@@ -167,7 +167,7 @@
             global $connection;
             global $sqlTable;
 
-            $eoiNumber = $_POST["eoi_number"];
+            $eoiNumber = sanitise_input($_POST["eoi_number"]);
             $status = sanitise_input($_POST["status"]);
 
             // Query to check if the eoiNumber exists in the database.
