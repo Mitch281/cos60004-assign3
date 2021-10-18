@@ -12,6 +12,7 @@
 
 <body>
     <?php
+    //TODO: Write appropriate pages if data does not validate.
         function sanitise_input($data) {
             $data = trim($data);
             $data = stripslashes($data);
@@ -109,7 +110,7 @@
             // Check job reference number.
             if (isset($_POST["reference_number"]) && $_POST["reference_number"] != "") {
                 $jobReferenceNumber = sanitise_input($_POST["reference_number"]);
-                $jobReferenceNumberRE = "/^[A-Z]{1}[0-9]{4}$/";
+                $jobReferenceNumberRE = "/^[a-zA-Z0-9]{5}$/";
 
                 if (!preg_match($jobReferenceNumberRE, $jobReferenceNumber)) {
                     $valid = false;
