@@ -30,7 +30,7 @@ h1 {
 
 /* Set backgroun color of all text (not including some specific text)/ */
 
-p:not(#timer):not(#manager_login form p), li, dt, dd, strong {
+p:not(#timer):not(#manager_login form p):not(#user_logged_in), li, dt, dd, strong {
     background-color: #CAEBF2;
 }
 
@@ -404,6 +404,10 @@ input, fieldset, select, textarea {
     float: right;
     text-decoration: none;
     color: black;
+}
+
+#user_logged_in {
+    display: inline;
 }
 
 .manager_request {
