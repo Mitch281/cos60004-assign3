@@ -15,6 +15,7 @@
         // TODO: Style table.
         // TODO: Check if we need data validation for manager requests???
         // TODO: Add relevant "@" annotations.
+        // TODO: Close connection.
         require_once("settings.php");
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
@@ -22,41 +23,41 @@
         function returnTable($result) {
             echo "<table class='manager_request'>\n";
 
-                // Table headers
-                echo "<tr>\n"
-                    . "<th>eoi Number</th>\n"
-                    . "<th>Job Reference Number</th>\n"
-                    . "<th>First Name</th>\n"
-                    . "<th>Last Name</th>\n"
-                    . "<th>Street Address</th>\n"
-                    . "<th>Suburb</th>\n"
-                    . "<th>State</th>\n"
-                    . "<th>Postcode</th>\n"
-                    . "<th>Email</th>\n"
-                    . "<th>Phone Number</th>\n"
-                    . "<th>Skills</th>\n"
-                    . "<th>Other Skills</th>\n"
-                    . "<th>Status</th>\n";
+            // Table headers
+            echo "<tr>\n"
+                . "<th>eoi Number</th>\n"
+                . "<th>Job Reference Number</th>\n"
+                . "<th>First Name</th>\n"
+                . "<th>Last Name</th>\n"
+                . "<th>Street Address</th>\n"
+                . "<th>Suburb</th>\n"
+                . "<th>State</th>\n"
+                . "<th>Postcode</th>\n"
+                . "<th>Email</th>\n"
+                . "<th>Phone Number</th>\n"
+                . "<th>Skills</th>\n"
+                . "<th>Other Skills</th>\n"
+                . "<th>Status</th>\n";
 
-                // Table content.
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>\n"
-                        . "<th>" . $row["eoiNumber"] . "</th>\n"
-                        . "<th>" . $row["JobReferenceNumber"] . "</th>\n"
-                        . "<th>" . $row["FirstName"] . "</th>\n"
-                        . "<th>" . $row["LastName"] . "</th>\n"
-                        . "<th>" . $row["StreetAddress"] . "</th>\n"
-                        . "<th>" . $row["Suburb"] . "</th>\n"
-                        . "<th>" . $row["StateLocation"] . "</th>\n"
-                        . "<th>" . $row["Postcode"] . "</th>\n"
-                        . "<th>" . $row["EmailAddress"] . "</th>\n"
-                        . "<th>" . $row["PhoneNumber"] . "</th>\n"
-                        . "<th>" . $row["Skills"] . "</th>\n"
-                        . "<th>" . $row["OtherSkills"] . "</th>\n"
-                        . "<th>" . $row["Status"] . "</th>\n";
-                }
-                echo "</table>\n";
-                mysqli_free_result($result);
+            // Table content.
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>\n"
+                    . "<th>" . $row["eoiNumber"] . "</th>\n"
+                    . "<th>" . $row["JobReferenceNumber"] . "</th>\n"
+                    . "<th>" . $row["FirstName"] . "</th>\n"
+                    . "<th>" . $row["LastName"] . "</th>\n"
+                    . "<th>" . $row["StreetAddress"] . "</th>\n"
+                    . "<th>" . $row["Suburb"] . "</th>\n"
+                    . "<th>" . $row["StateLocation"] . "</th>\n"
+                    . "<th>" . $row["Postcode"] . "</th>\n"
+                    . "<th>" . $row["EmailAddress"] . "</th>\n"
+                    . "<th>" . $row["PhoneNumber"] . "</th>\n"
+                    . "<th>" . $row["Skills"] . "</th>\n"
+                    . "<th>" . $row["OtherSkills"] . "</th>\n"
+                    . "<th>" . $row["Status"] . "</th>\n";
+            }
+            echo "</table>\n";
+            mysqli_free_result($result);
         }
 
         function getAllApplications() {
@@ -71,6 +72,7 @@
             else {
                 returnTable($result);
             }
+            mysqli_close($connection);
         }
 
         // Get all of the eoi's corresponding to the entered job reference number.
@@ -90,6 +92,7 @@
             else {
                 returnTable($result);
             }
+            mysqli_close($connection);
         }
 
         function getEOIsGivenName() {
@@ -123,6 +126,33 @@
             else {
                 returnTable($result);
             }
+            mysqli_close($connection);
+        }
+
+        function deleteEOIsGivenRef() {
+            global $connection;
+            global $sqlTable;
+
+            $jobReferenceNumber = $_GET["job_reference_number"];
+
+            $query = "delete from eoi where JobReferenceNumber = '$jobReferenceNumber'";
+            $result = mysqli_query($connection, $query);
+
+            if (!$result) {
+                echo "<p>Oh no! Something went wrong!</p>";
+            }
+            // Note: jobReferenceNumber is NOT case sensitive in mysql. In other words, deleting b4729 is same as 
+            // deleting B4729.
+            else {
+                if (mysqli_affected_rows($connection) == 0) {
+                    echo "<p>There were no applications deleted. Either the job does not exist or there were no
+                    applications for the job.</p>";
+                }
+                else {
+                    echo "<p>" . mysqli_affected_rows($connection) . " jobs were successfully deleted.</p>";
+                }
+            }
+            mysqli_close($connection);
         }
 
         // The manager pressed the button to get all form applications.
@@ -134,6 +164,9 @@
         }
         if (isset($_GET["get_eois_given_name"])) {
             getEOIsGivenName();
+        }
+        if (isset($_GET["delete_eois_given_ref"])) {
+            deleteEOIsGivenRef();
         }
     ?>
 </body>
