@@ -362,7 +362,7 @@ input, fieldset, select, textarea {
 #manager_login {
     width: 50%;
     height: 50vh;
-    background-color: white;
+    background-color: #CAEBF2;
     /* Centre the section. Taken from https://www.codegrepper.com/code-examples/css/html+how+to+make+a+square+in+the+middle+of+page */
     position: fixed;
     top: 50%;
@@ -377,6 +377,7 @@ input, fieldset, select, textarea {
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    color: #FF3B3F;
 
     /* Make width same length as text. */
     width: fit-content;
