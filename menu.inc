@@ -1,5 +1,5 @@
 <section id="main_menu">
-    <a id="logo" href="index.html"><img src="styles/images/logo2.png" alt="Company Logo"></a>
+    <a id="logo" href="index.php"><img src="styles/images/logo2.png" alt="Company Logo"></a>
     <nav>
         <a class="nav_bar" href="index.php" <?php echo ($page=="homePage")? "id='highlighted'" : "" ; ?> >Home Page</a> |
         <a class="nav_bar" href="jobs.php" <?php echo ($page=="jobDescriptions")? "id='highlighted'" : "" ; ?> >Job Descriptions</a> |
