@@ -48,10 +48,23 @@
         <legend>Delete Applications Given Job Reference Number</legend>
         <form id="delete_eois_given_ref" method="post" action="process-manager-request.php">
             <label for="job_reference_number">Job Reference Number</label>
-            <input type="text" name="job_reference_number" required="required" pattern="[a-zA-Z0-9]{5}" />
+            <input type="text" name="job_reference_number" id="job_reference_number" required="required" pattern="[a-zA-Z0-9]{5}" />
             <input class="form_action" type="submit" name="delete_eois_given_ref" value="Delete">
         </form>
     </fieldset>
+
+    <fieldset class="manager_request">
+        <legend>Change Status Given EOI Number</legend>
+        <form id="change_status_given_eoi_number" method="post" action="process-manager-request.php">
+            <label for="eoi_number">EOI Number</label>
+            <input type="text" name="eoi_number" id="eoi_number" required="required" pattern="[0-9]*" />
+
+            <label for="status">Status</label>
+            <input type="text" name="status" required="required" pattern="[a-zA-Z]{3,7}" />
+            <input class="form_action" type="submit" name="change_status_given_eoi_number" id="status" value="Change Status">
+        </form>
+    </fieldset>
+
     <hr />
     <?php
         include_once("footer.inc");

@@ -20,6 +20,13 @@
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
 
+        function sanitise_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
         function returnTable($result) {
             echo "<table class='manager_request'>\n";
 
@@ -155,6 +162,39 @@
             mysqli_close($connection);
         }
 
+        function changeStatusGivenEOINumber() {
+            // TODO: Add message if the status we want to change to is already the status.
+            global $connection;
+            global $sqlTable;
+
+            $eoiNumber = $_POST["eoi_number"];
+            $status = sanitise_input($_POST["status"]);
+
+            // Query to check if the eoiNumber exists in the database.
+            $checkExistQuery = "select * from eoi where eoiNumber = '$eoiNumber'";
+            $checkExist = mysqli_query($connection, $checkExistQuery);
+
+            if ($status != "New" && $status != "Current" && $status != "Final") {
+                echo "<p>You cannot change a status to this value!</p>";
+            }
+            // The eoiNumber does not exist.
+            else if (mysqli_num_rows($checkExist) == 0) {
+                echo "<p>This job application number does not exist!</p>.";
+            }
+            else {
+                $query = "update eoi set Status = '$status' where eoiNumber = '$eoiNumber'";
+                $result = mysqli_query($connection, $query);
+
+                if (!$result) {
+                    echo "<p>Oh no! Something went wrong.!</p>";
+                }
+                else {
+                    echo "<p>Status succesfully changed for job application $eoiNumber";
+                }
+            }
+            mysqli_close($connection);
+        }
+
         // The manager pressed the button to get all form applications.
         if (isset($_GET["get_all_applications"])) {
             getAllApplications();
@@ -167,6 +207,9 @@
         }
         if (isset($_POST["delete_eois_given_ref"])) {
             deleteEOIsGivenRef();
+        }
+        if (isset($_POST["change_status_given_eoi_number"])) {
+            changeStatusGivenEOINumber();
         }
     ?>
 </body>
