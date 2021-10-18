@@ -40,8 +40,8 @@
         </p>
     </section>
     <!-- Enhancement 1 -->
-    <a id="jobs" href="jobs.html">Check Out Job Openings Now!</a>
-    <a id="apply" href="apply.html">Apply For Jobs Now!</a>
+    <a id="jobs" href="jobs.php">Check Out Job Openings Now!</a>
+    <a id="apply" href="apply.php">Apply For Jobs Now!</a>
     <br>
     <!-- References -->
     <a href="https://www.freelogodesign.org/manager/signin?r=https%3A%2F%2Fwww.freelogodesign.org%2Fmanager">Logo source</a>
