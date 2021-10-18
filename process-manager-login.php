@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +51,8 @@
         }
 
         if ($valid) {
+            $_SESSION["username"] = $username;
+            $_SESSION["password"] = $password;
             header("location: manage.php");
         }
         else {
