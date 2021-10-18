@@ -13,9 +13,9 @@
     <title>Manager Login | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
 </head>
-<!--TODO: Check if we still need to name this page manager-login.php instead of manager-login.html -->
 <body>
     <?php
+    // TODO: Add login details for marker.
     $page = "";
         include_once("menu.inc");
         // User already logged in.
