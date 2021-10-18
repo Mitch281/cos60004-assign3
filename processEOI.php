@@ -13,6 +13,7 @@
 <body>
     <?php
     //TODO: Write appropriate pages if data does not validate.
+    //TODO: HTML VALIDATION.
         function sanitise_input($data) {
             $data = trim($data);
             $data = stripslashes($data);

@@ -16,6 +16,7 @@
         // TODO: Check if we need data validation for manager requests???
         // TODO: Add relevant "@" annotations.
         // TODO: Close connection.
+        // TODO: HTML VALIDATION.
         require_once("settings.php");
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
