@@ -30,7 +30,7 @@ h1 {
 
 /* Set backgroun color of all text (not including some specific text)/ */
 
-p:not(#timer), li, dt, dd, strong {
+p:not(#timer):not(#manager_login form p):not(#user_logged_in), li, dt, dd, strong {
     background-color: #CAEBF2;
 }
 
@@ -358,3 +358,58 @@ input, fieldset, select, textarea {
 }
 
 /********************************* Above refers to slideshow in index.html *********************************/
+
+#manager_login {
+    width: 50%;
+    height: 50vh;
+    background-color: #CAEBF2;
+    /* Centre the section. Taken from https://www.codegrepper.com/code-examples/css/html+how+to+make+a+square+in+the+middle+of+page */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#manager_login h1 {
+    /* Centre the login header */
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FF3B3F;
+
+    /* Make width same length as text. */
+    width: fit-content;
+}
+
+#manager_login form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+#manager_login .form_action {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+}
+
+#logout_button {
+    float: right;
+    text-decoration: none;
+    color: black;
+}
+
+#user_logged_in {
+    display: inline;
+}
+
+.manager_request {
+    clear: both;
+}

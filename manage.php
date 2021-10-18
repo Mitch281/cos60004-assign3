@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,12 @@
     <?php
         $page = "managerPage";
         include_once("menu.inc"); 
+        
+        // Display username of manager currently logged in.
+        $username = $_SESSION["username"];
+        echo "<p id='user_logged_in'>user: $username</p>";
     ?>
+    <a href="logout.php" id="logout_button">Logout</a>
     <fieldset class="manager_request">
         <legend>Get All Job Applications</legend>
         <form id="get_all_applications" method="get" action="process-manager-request.php">
