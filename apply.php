@@ -21,7 +21,7 @@
     <p id="timer"></p>
     <form id="job_form" method="post" action="processEOI.php">
         <p><label for="reference_number">Job Reference Number</label>
-            <input type="text" name="reference_number" id="reference_number" required="required" pattern="[^' ']{5}" />
+            <input type="text" name="reference_number" id="reference_number" required="required" pattern="[a-zA-Z0-9]{5}" />
         </p>
         <p><label for="first_name">First Name</label>
             <input type="text" name="first_name" id="first_name" required="required" pattern="[A-Za-z]{1,20}" />

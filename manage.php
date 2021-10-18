@@ -43,6 +43,15 @@
             <input class="form_action" type="submit" name="get_eois_given_name" value="Get Applications">
         </form>
     </fieldset>
+
+    <fieldset class="manager_request">
+        <legend>Delete Applications Given Job Reference Number</legend>
+        <form id="delete_eois_given_ref" method="get" action="process-manager-request.php">
+            <label for="job_reference_number">Job Reference Number</label>
+            <input type="text" name="job_reference_number" required="required" pattern="[a-zA-Z0-9]{5}" />
+            <input class="form_action" type="submit" name="delete_eois_given_ref" value="Delete">
+        </form>
+    </fieldset>
     <hr />
     <?php
         include_once("footer.inc");
