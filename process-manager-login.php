@@ -12,6 +12,7 @@
 
 <body>
     <?php
+        // TODO: Once manager is logged in, let him stay logged in for x amount of minutes (maybe five?)/
         require_once("settings.php");
         $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "ManagerLogin";
