@@ -15,6 +15,7 @@
         $page = "managerPage";
         include_once("menu.inc"); 
     ?>
+    <a href="logout.php" id="logout_button">Logout</a>
     <fieldset class="manager_request">
         <legend>Get All Job Applications</legend>
         <form id="get_all_applications" method="get" action="process-manager-request.php">
