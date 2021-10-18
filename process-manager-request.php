@@ -133,7 +133,7 @@
             global $connection;
             global $sqlTable;
 
-            $jobReferenceNumber = $_GET["job_reference_number"];
+            $jobReferenceNumber = $_POST["job_reference_number"];
 
             $query = "delete from eoi where JobReferenceNumber = '$jobReferenceNumber'";
             $result = mysqli_query($connection, $query);
@@ -165,7 +165,7 @@
         if (isset($_GET["get_eois_given_name"])) {
             getEOIsGivenName();
         }
-        if (isset($_GET["delete_eois_given_ref"])) {
+        if (isset($_POST["delete_eois_given_ref"])) {
             deleteEOIsGivenRef();
         }
     ?>
