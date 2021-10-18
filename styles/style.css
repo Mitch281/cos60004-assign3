@@ -398,3 +398,13 @@ input, fieldset, select, textarea {
     transform: translate(-50%, -50%);
     margin-top: 50px;
 }
+
+#logout_button {
+    float: right;
+    text-decoration: none;
+    color: black;
+}
+
+.manager_request {
+    clear: both;
+}
