@@ -52,6 +52,10 @@ p:not(#timer):not(#manager_login form p):not(#user_logged_in), li, dt, dd, stron
     height: 120px;
 }
 
+body {
+    margin-top: 0px;
+}
+
 /* Style when you hover over links at top of page and footer. */
 
 nav a:hover {
