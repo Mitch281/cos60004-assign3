@@ -77,6 +77,7 @@
             global $sqlTable;
             $sortRequest = $_GET["manager_sort_request"];
 
+
             if ($sortRequest == "none") {
                 $query = "select * from eoi";
             }
@@ -110,9 +111,24 @@
             global $connection;
             global $sqlTable;
             $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
+            $sortRequest = $_GET["manager_sort_request"];
 
-            // DON'T FORGET SINGLE QUOTATION MARKS!
-            $query = "select * from eoi where JobReferenceNumber = '$jobReferenceNumber'";
+            if ($sortRequest == "none") {
+                // DON'T FORGET SINGLE QUOTATION MARKS!
+                $query = "select * from eoi where JobReferenceNumber = '$jobReferenceNumber'";
+            }
+            else {
+                $query = "select * from eoi where JobReferenceNumber = '$jobReferenceNumber' order by $sortRequest";
+
+                if ($sortRequest === "FirstName") {
+                    $query .= ", LastName";
+                }
+
+                else if ($sortRequest === "LastName") {
+                    $query .= ", FirstName";
+                }
+            }
+
             $result = mysqli_query($connection, $query);
 
             // Note: !$result is for when query is invalid.
@@ -129,6 +145,7 @@
             global $connection;
             global $sqlTable;
 
+            $sortRequest = $_GET["manager_sort_request"];
             $firstName = sanitise_input($_GET["first_name"]);
             $lastName = sanitise_input($_GET["last_name"]);
 
@@ -163,6 +180,19 @@
                     returnTable($result);
                 }
             }
+
+                if ($sortRequest !== "none") {
+                    $query .= "order by $sortRequest";
+
+                    if ($sortRequest === "FirstName") {
+                        $query .= ", LastName";
+                    }
+
+                    if ($sortRequest === "LastName") {
+                        $query .= ", FirstName";
+                    }
+                }
+            echo $query;
             mysqli_close($connection);
         }
 
