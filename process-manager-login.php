@@ -40,7 +40,7 @@
                 // The candidate username is any username where the password matches the password the user has entered.
                 // This is then compared to the username entered until there is a match.
                 $candidateUsername = $row["Username"];
-                if ($username == $candidateUsername) {
+                if ($username === $candidateUsername) {
                     $valid = true;
                     break;
                 }

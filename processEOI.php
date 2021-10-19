@@ -31,7 +31,7 @@
             $monthOfBirth = intval($birthArray[1]);
             $yearOfBirth = intval($birthArray[2]);
 
-            if ($monthToday == $monthOfBirth) {
+            if ($monthToday === $monthOfBirth) {
                 // Birthday this year has happened.
                 if ($dayOfBirth <= $dayToday) {
                     $age = $yearToday - $yearOfBirth;
@@ -62,42 +62,42 @@
             $firstNumber = $postcode[0];
             switch($state) {
                 case "VIC":
-                    if ($firstNumber != "3" && $firstNumber != "8") {
+                    if ($firstNumber !== "3" && $firstNumber !== "8") {
                         $validPostcode = false;
                     }
                     break;
                 case "NSW":
-                    if ($firstNumber != "1" && $firstNumber != "2") {
+                    if ($firstNumber !== "1" && $firstNumber !== "2") {
                         $validPostcode = false;
                     }
                     break;
                 case "QLD":
-                    if ($firstNumber != "4" && $firstNumber != "9") {
+                    if ($firstNumber !== "4" && $firstNumber !== "9") {
                         $validPostcode = false;
                     }
                     break;
                 case "NT":
-                    if ($firstNumber != "0") {
+                    if ($firstNumber !== "0") {
                         $validPostcode = false;
                     }
                     break;
                 case "WA":
-                    if ($firstNumber != "6") {
+                    if ($firstNumber !== "6") {
                         $validPostcode = false;
                     }
                     break;
                 case "SA":
-                    if ($firstNumber != "5") {
+                    if ($firstNumber !== "5") {
                         $validPostcode = false;
                     }
                     break;
                 case "TAS":
-                    if ($firstNumber != "7") {
+                    if ($firstNumber !== "7") {
                         $validPostcode = false;
                     }
                     break;
                 case "ACT":
-                    if ($firstNumber != "0") {
+                    if ($firstNumber !== "0") {
                         $validPostcode = false;
                     }
                     break;
@@ -109,7 +109,7 @@
             $valid = true;
 
             // Check job reference number.
-            if (isset($_POST["reference_number"]) && $_POST["reference_number"] != "") {
+            if (isset($_POST["reference_number"]) && $_POST["reference_number"] !== "") {
                 $jobReferenceNumber = sanitise_input($_POST["reference_number"]);
                 $jobReferenceNumberRE = "/^[a-zA-Z0-9]{5}$/";
 
@@ -122,7 +122,7 @@
             }
 
             // Check first name.
-            if (isset($_POST["first_name"]) && $_POST["first_name"] != "") {
+            if (isset($_POST["first_name"]) && $_POST["first_name"] !== "") {
                 $firstName = sanitise_input($_POST["first_name"]); 
 
                 if (!preg_match("/^[A-Za-z]{1,20}$/", $firstName)) {
@@ -135,7 +135,7 @@
             }
 
             // Check last name.
-            if (isset($_POST["last_name"]) && $_POST["first_name"] != "") {
+            if (isset($_POST["last_name"]) && $_POST["first_name"] !== "") {
                 $lastName = sanitise_input($_POST["last_name"]);
 
                 if (!preg_match("/^[A-Za-z-]{1,20}$/", $lastName)) {
@@ -147,7 +147,7 @@
             }
 
             // Check age.
-            if (isset($_POST["dob"]) && $_POST["dob"] != "") {
+            if (isset($_POST["dob"]) && $_POST["dob"] !== "") {
                 $dateOfBirth = sanitise_input($_POST["dob"]);
                 $dateOfBirthRE = "/^([0]?[1-9]|[12][0-9]|[3][01])\/([0]?[1-9]|[1][0-2])\/[0-9]{4}$/";
 
@@ -171,7 +171,7 @@
             }
 
             // Check street address.
-            if (isset($_POST["street_address"]) && $_POST["street_address"] != "") {
+            if (isset($_POST["street_address"]) && $_POST["street_address"] !== "") {
                 $streetAddress = sanitise_input($_POST["street_address"]);
                 // Not needed because max length is 40 in html but whatever.
                 if (strlen($streetAddress) > 40) {
@@ -183,7 +183,7 @@
             }
 
             // Check suburb.
-            if (isset($_POST["suburb"]) && $_POST["suburb"] != "") {
+            if (isset($_POST["suburb"]) && $_POST["suburb"] !== "") {
                 $suburb = sanitise_input($_POST["suburb"]);
                 // Noy needed beause max length is 40 in html but whatever.
                 if (strlen($suburb) > 40) {
@@ -195,7 +195,7 @@
             }
 
             // Check state.
-            if (isset($_POST["state"]) && $_POST["state"] != "") {
+            if (isset($_POST["state"]) && $_POST["state"] !== "") {
                 $state = sanitise_input($_POST["state"]);
             }
             else {
@@ -203,13 +203,13 @@
             }
 
             //Check postcode.
-            if (isset($_POST["postcode"]) && $_POST["postcode"] != "") {
+            if (isset($_POST["postcode"]) && $_POST["postcode"] !== "") {
                 $postcode = sanitise_input($_POST["postcode"]);
                 if (!preg_match("/^[0-9]{4}$/", $postcode)) {
                     $valid = false;
                 }
                 // A state has also been entered.
-                else if (isset($_POST["state"]) && $_POST["state"] != "") {
+                else if (isset($_POST["state"]) && $_POST["state"] !== "") {
                     $state = sanitise_input($_POST["state"]);
                     if (!checkPostcode($postcode, $state)) {
                         $valid = false;
@@ -221,7 +221,7 @@
             }
 
             // Check email
-            if (isset($_POST["email"]) && $_POST["email"] != "") {
+            if (isset($_POST["email"]) && $_POST["email"] !== "") {
                 $email = sanitise_input($_POST["email"]);
 
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -233,7 +233,7 @@
             }
 
             // Check phone number
-            if (isset($_POST["phone_number"]) && $_POST["phone_number"] != "") {
+            if (isset($_POST["phone_number"]) && $_POST["phone_number"] !== "") {
                 $phoneNumber = sanitise_input($_POST["phone_number"]);
 
                 if (!preg_match("/^[0-9' ']{8,12}$/", $phoneNumber)) {
@@ -250,7 +250,7 @@
 
                 // If other_skills checkbox was ticked, then check if other skills text box has something written.
                 if (in_array("other_skills", $skills)) {
-                    if (!isset($_POST["other_skills"]) || $_POST["other_skills"] == "") {
+                    if (!isset($_POST["other_skills"]) || $_POST["other_skills"] === "") {
                         $valid = false;
                     }
                 }
