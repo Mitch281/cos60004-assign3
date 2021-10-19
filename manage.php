@@ -58,7 +58,6 @@
             <p class="not_highlighted">
                 <select name="manager_sort_request">
                     <option value="none" selected="selected">Sort by:</option>
-                    <option value="JobReferenceNumber">Job Reference Number</option>
                     <option value="FirstName">First Name</option>
                     <option value="LastName">Last Name</option>
                     <option value="StreetAddress">Street Address</option>
