@@ -76,8 +76,14 @@
             global $connection;
             global $sqlTable;
             $sortRequest = $_GET["manager_sort_request"];
-            echo $sortRequest;
-            $query = "select * from eoi";
+
+            if ($sortRequest == "none") {
+                $query = "select * from eoi";
+            }
+            else {
+                $query = "select * from eoi order by $sortRequest";
+            }
+
             $result = mysqli_query($connection, $query);
 
             if (!$result || mysqli_num_rows($result) == 0) {

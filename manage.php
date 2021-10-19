@@ -37,13 +37,13 @@
         <form id="get_all_applications" method="get" action="process-manager-request.php">
             <p class="not_highlighted">
                 <select name="manager_sort_request">
-                    <option value="sort_by" selected="selected">Sort by:</option>
-                    <option value="sort_by_job_ref">Job Reference Number</option>
-                    <option value="sort_by_first_name">First Name</option>
-                    <option value="sort_by_last_name">Last Name</option>
-                    <option value="sort_by_street">Street Address</option>
-                    <option value="sort_by_suburb">Suburb</option>
-                    <option value="state">State</option>
+                    <option value="none" selected="selected">Sort by:</option>
+                    <option value="JobReferenceNumber">Job Reference Number</option>
+                    <option value="FirstName">First Name</option>
+                    <option value="LastName">Last Name</option>
+                    <option value="StreetAddress">Street Address</option>
+                    <option value="Suburb">Suburb</option>
+                    <option value="State">State</option>
                     <option value="Postcode">Postcode</option>
                     <option value="Status">Status</option>
                 </select>
