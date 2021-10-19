@@ -132,7 +132,7 @@
             $result = mysqli_query($connection, $query);
 
             // Note: !$result is for when query is invalid.
-            if (!$result || mysqli_num_rows($result) == 0) {
+            if (!$result || mysqli_num_rows($result) === 0) {
                 echo "<p>There are no job applications for this position yet or this job does not exist.</p>";
             }
             else {
@@ -211,7 +211,7 @@
             // Note: jobReferenceNumber is NOT case sensitive in mysql. In other words, deleting b4729 is same as 
             // deleting B4729.
             else {
-                if (mysqli_affected_rows($connection) == 0) {
+                if (mysqli_affected_rows($connection) === 0) {
                     echo "<p>There were no applications deleted. Either the job does not exist or there were no
                     applications for the job.</p>";
                 }
