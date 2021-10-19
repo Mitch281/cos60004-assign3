@@ -23,8 +23,6 @@
         
         // Boolean to check if the username and password entered is valid.
         $valid = false;
-        $usernameError = "";
-        $passwordError = "";
 
         $username = $_GET["username"];
         $password = $_GET["password"];

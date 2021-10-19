@@ -319,7 +319,6 @@
                     $result = mysqli_query($connection, $createQuery);
 
                     if (!$result) {
-                        echo mysqli_error($connection);
                         echo"<p>Oh no! Something went wrong!.</p>";
                     }
                 }
