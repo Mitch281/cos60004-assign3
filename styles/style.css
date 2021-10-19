@@ -363,6 +363,10 @@ input, fieldset, select, textarea {
 
 /********************************* Above refers to slideshow in index.html *********************************/
 
+.manager_request:not(:nth-child(1)) {
+    margin-top: 15px;
+}
+
 #manager_login {
     width: 50%;
     height: 50vh;
