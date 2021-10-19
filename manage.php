@@ -21,14 +21,16 @@
             header("location: manager-login.php");
         }
 
-        $page = "managerPage";
-        include_once("menu.inc"); 
-        
         // Display username of manager currently logged in.
         $username = $_SESSION["username"];
+        echo "<section id='login_header'>";
         echo "<p id='user_logged_in'>user: $username</p>";
+        echo "<a href='logout.php' id='logout_button'>Logout</a>";
+        echo "</section>";
+
+        $page = "managerPage";
+        include_once("menu.inc"); 
     ?>
-    <a href="logout.php" id="logout_button">Logout</a>
     <fieldset class="manager_request">
         <legend>Get All Job Applications</legend>
         <form id="get_all_applications" method="get" action="process-manager-request.php">

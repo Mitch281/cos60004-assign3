@@ -405,15 +405,27 @@ input, fieldset, select, textarea {
 }
 
 #logout_button {
-    float: right;
+    position: absolute;
+    top: 6px;
+    right: 10%;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 #user_logged_in {
-    display: inline;
+    position: absolute;
+    top: 6px;
+    left: 10%;
+    color: white;
+    margin: 0px;
 }
 
 .manager_request {
     clear: both;
+}
+
+#login_header {
+    position: relative;
+    height: 30px;
+    background-color: #FF3B3F;
 }
