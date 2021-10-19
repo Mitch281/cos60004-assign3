@@ -43,7 +43,7 @@
                     <option value="LastName">Last Name</option>
                     <option value="StreetAddress">Street Address</option>
                     <option value="Suburb">Suburb</option>
-                    <option value="State">State</option>
+                    <option value="StateLocation">State</option>
                     <option value="Postcode">Postcode</option>
                     <option value="Status">Status</option>
                 </select>
