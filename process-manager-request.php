@@ -75,6 +75,8 @@
         function getAllApplications() {
             global $connection;
             global $sqlTable;
+            $sortRequest = $_GET["manager_sort_request"];
+            echo $sortRequest;
             $query = "select * from eoi";
             $result = mysqli_query($connection, $query);
 

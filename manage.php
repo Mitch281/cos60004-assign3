@@ -34,19 +34,20 @@
 
     <fieldset class="manager_request">
         <legend>Get All Job Applications</legend>
-        <label for="sort_manager_request">Sort:</label>
-        <p class="not_highlighted"><select name="sort_manager_request">
-            <option value="None">None</option>
-            <option value="sort_by_job_ref">Job Reference Number</option>
-            <option value="sort_by_first_name">First Name</option>
-            <option value="sort_by_last_name">Last Name</option>
-            <option value="sort_by_street">Street Address</option>
-            <option value="sort_by_suburb">Suburb</option>
-            <option value="state">State</option>
-            <option value="Postcode">Postcode</option>
-            <option value="Status">Status</option>
-        </select></p>
         <form id="get_all_applications" method="get" action="process-manager-request.php">
+            <p class="not_highlighted">
+                <select name="manager_sort_request">
+                    <option value="sort_by" selected="selected">Sort by:</option>
+                    <option value="sort_by_job_ref">Job Reference Number</option>
+                    <option value="sort_by_first_name">First Name</option>
+                    <option value="sort_by_last_name">Last Name</option>
+                    <option value="sort_by_street">Street Address</option>
+                    <option value="sort_by_suburb">Suburb</option>
+                    <option value="state">State</option>
+                    <option value="Postcode">Postcode</option>
+                    <option value="Status">Status</option>
+                </select>
+            </p>
             <input class="form_action" type="submit" name="get_all_applications" value="Get All Applications">
         </form>
     </fieldset>
