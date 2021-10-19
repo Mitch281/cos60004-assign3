@@ -129,7 +129,7 @@
 
              // Note: !$result is for when query is invalid.
              if (!$result || mysqli_num_rows($result) == 0) {
-                echo "<p>There are no job applications for this position yet or this job does not exist.</p>";
+                echo "<p>There are no job applications under this name yet.</p>";
             }
             else {
                 returnTable($result);
