@@ -31,30 +31,21 @@
         $page = "managerPage";
         include_once("menu.inc"); 
     ?>
-    <fieldset>
-        <legend>Sort</legend>
-        <form id="sort_manager_request" method="get" action="process-manager-request.php">
-            <p class="not_highlighted"><label for="sort_by_job_ref">Job Reference Number</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_job_ref" value="sort_by_job_ref"></p>
-            <p class="not_highlighted"><label for="sort_by_first_name">First Name</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_first_name" value="sort_by_first_name"></p>
-            <p class="not_highlighted"><label for="sort_by_last_name">Last Name</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_last_name" value="sort_by_last_name"></p>
-            <p class="not_highlighted"><label for="sort_by_street">Street Address</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_street" value="sort_by_street"></p>
-            <p class="not_highlighted"><label for=sort_by_suburb">Suburb</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_suburb" value="sort_by_suburb"></p>
-            <p class="not_highlighted"><label for="sort_by_state">State</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_state" value="sort_by_state"></p>
-            <p class="not_highlighted"><label for="sort_by_postcode">Postcode</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_postcode" value="sort_by_postcode"></p>
-            <p class="not_highlighted"><label for="sort_by_status">Status</label>
-            <input type="radio" name="manager_sort_option" id="sort_by_status" value="sort_by_status"></p>
-        </form>
-    </fieldset>
 
     <fieldset class="manager_request">
         <legend>Get All Job Applications</legend>
+        <label for="sort_manager_request">Sort:</label>
+        <p class="not_highlighted"><select name="sort_manager_request">
+            <option value="None">None</option>
+            <option value="sort_by_job_ref">Job Reference Number</option>
+            <option value="sort_by_first_name">First Name</option>
+            <option value="sort_by_last_name">Last Name</option>
+            <option value="sort_by_street">Street Address</option>
+            <option value="sort_by_suburb">Suburb</option>
+            <option value="state">State</option>
+            <option value="Postcode">Postcode</option>
+            <option value="Status">Status</option>
+        </select></p>
         <form id="get_all_applications" method="get" action="process-manager-request.php">
             <input class="form_action" type="submit" name="get_all_applications" value="Get All Applications">
         </form>
