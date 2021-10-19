@@ -367,6 +367,42 @@ input, fieldset, select, textarea {
     margin-top: 15px;
 }
 
+/* Taken from https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l */
+#manager_request_table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#manager_request_table thead {
+    background-color: #FF3B3F;
+}
+
+#manager_request_table thead tr {
+    text-align: left;
+    color: white;
+}
+
+#manager_request_table tbody tr {
+    text-align: left;
+}
+
+#manager_request_table th, #manager_request_table td {
+    padding: 6px 8px;
+}
+
+#manager_request_table tbody tr:nth-of-type(even) {
+    background-color: #A9A9A9;
+}
+
+#manager_request_table tbody tr:nth-of-type(even) {
+    color: #FF3B3F;
+    font-weight: bold;
+}
+
 #manager_login {
     width: 50%;
     height: 50vh;

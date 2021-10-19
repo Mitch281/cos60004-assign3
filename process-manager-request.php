@@ -12,7 +12,6 @@
 
 <body>
     <?php
-        // TODO: Style table.
         // TODO: Check if we need data validation for manager requests???
         // TODO: Add relevant "@" annotations.
         // TODO: Close connection.
@@ -29,10 +28,11 @@
         }
 
         function returnTable($result) {
-            echo "<table class='manager_request'>\n";
+            echo "<table id='manager_request_table'>\n";
 
             // Table headers
-            echo "<tr>\n"
+            echo "<thead>\n"
+                . "<tr>\n"
                 . "<th>eoi Number</th>\n"
                 . "<th>Job Reference Number</th>\n"
                 . "<th>First Name</th>\n"
@@ -45,25 +45,29 @@
                 . "<th>Phone Number</th>\n"
                 . "<th>Skills</th>\n"
                 . "<th>Other Skills</th>\n"
-                . "<th>Status</th>\n";
+                . "<th>Status</th>\n"
+                . "</tr>\n"
+                . "</thead>\n";
 
             // Table content.
+            echo "<tbody>\n";
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>\n"
-                    . "<th>" . $row["eoiNumber"] . "</th>\n"
-                    . "<th>" . $row["JobReferenceNumber"] . "</th>\n"
-                    . "<th>" . $row["FirstName"] . "</th>\n"
-                    . "<th>" . $row["LastName"] . "</th>\n"
-                    . "<th>" . $row["StreetAddress"] . "</th>\n"
-                    . "<th>" . $row["Suburb"] . "</th>\n"
-                    . "<th>" . $row["StateLocation"] . "</th>\n"
-                    . "<th>" . $row["Postcode"] . "</th>\n"
-                    . "<th>" . $row["EmailAddress"] . "</th>\n"
-                    . "<th>" . $row["PhoneNumber"] . "</th>\n"
-                    . "<th>" . $row["Skills"] . "</th>\n"
-                    . "<th>" . $row["OtherSkills"] . "</th>\n"
-                    . "<th>" . $row["Status"] . "</th>\n";
+                    . "<td>" . $row["eoiNumber"] . "</td>\n"
+                    . "<td>" . $row["JobReferenceNumber"] . "</td>\n"
+                    . "<td>" . $row["FirstName"] . "</td>\n"
+                    . "<td>" . $row["LastName"] . "</td>\n"
+                    . "<td>" . $row["StreetAddress"] . "</td>\n"
+                    . "<td>" . $row["Suburb"] . "</td>\n"
+                    . "<td>" . $row["StateLocation"] . "</td>\n"
+                    . "<td>" . $row["Postcode"] . "</td>\n"
+                    . "<td>" . $row["EmailAddress"] . "</td>\n"
+                    . "<td>" . $row["PhoneNumber"] . "</td>\n"
+                    . "<td>" . $row["Skills"] . "</td>\n"
+                    . "<td>" . $row["OtherSkills"] . "</td>\n"
+                    . "<td>" . $row["Status"] . "</td>\n";
             }
+            echo "</tbody>\n";
             echo "</table>\n";
             mysqli_free_result($result);
         }
