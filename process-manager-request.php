@@ -82,6 +82,16 @@
             }
             else {
                 $query = "select * from eoi order by $sortRequest";
+
+                // If first name or last name is picked, then we want to sort by first name first then last name second
+                // or last name first then first name second respectively.
+
+                if ($sortRequest == "FirstName") {
+                    $query .= ", LastName";
+                }
+                else if ($sortRequest == "LastName") {
+                    $query .= ", FirstName";
+                }
             }
 
             $result = mysqli_query($connection, $query);
