@@ -78,7 +78,7 @@
             $sortRequest = $_GET["manager_sort_request"];
 
 
-            if ($sortRequest == "none") {
+            if ($sortRequest === "none") {
                 $query = "select * from eoi";
             }
             else {
@@ -87,17 +87,17 @@
                 // If first name or last name is picked, then we want to sort by first name first then last name second
                 // or last name first then first name second respectively.
 
-                if ($sortRequest == "FirstName") {
+                if ($sortRequest === "FirstName") {
                     $query .= ", LastName";
                 }
-                else if ($sortRequest == "LastName") {
+                else if ($sortRequest === "LastName") {
                     $query .= ", FirstName";
                 }
             }
 
             $result = mysqli_query($connection, $query);
 
-            if (!$result || mysqli_num_rows($result) == 0) {
+            if (!$result || mysqli_num_rows($result) === 0) {
                 echo "<p>There are no job applications yet.</p>";
             }
             else {
@@ -113,7 +113,7 @@
             $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
             $sortRequest = $_GET["manager_sort_request"];
 
-            if ($sortRequest == "none") {
+            if ($sortRequest === "none") {
                 // DON'T FORGET SINGLE QUOTATION MARKS!
                 $query = "select * from eoi where JobReferenceNumber = '$jobReferenceNumber'";
             }
@@ -149,19 +149,20 @@
             $firstName = sanitise_input($_GET["first_name"]);
             $lastName = sanitise_input($_GET["last_name"]);
 
-            if ($firstName == "" && $lastName == "") {
+            if ($firstName === "" && $lastName === "") {
                 echo "<p>Please enter a name.</p>";
+                $query = "";
             }
 
             else {
                 
                 // Both first names and last names empty or both first names and last names filled.
-                if ($firstName != "" && $lastName != "") {
+                if ($firstName !== "" && $lastName !== "") {
                     $query = "select * from eoi where FirstName like '$firstName%' and LastName like '$lastName%'";
                 }
 
                 // First name is filled but last name is empty.
-                else if ($firstName != "" && $lastName == "") {
+                else if ($firstName !== "" && $lastName === "") {
                     $query = "select * from eoi where FirstName like '$firstName%'";
                 }
 
@@ -173,7 +174,7 @@
                 $result = mysqli_query($connection, $query);
 
                  // Note: !$result is for when query is invalid.
-                 if (!$result || mysqli_num_rows($result) == 0) {
+                 if (!$result || mysqli_num_rows($result) === 0) {
                     echo "<p>There are no job applications under this name yet.</p>";
                 }
                 else {
@@ -192,7 +193,6 @@
                         $query .= ", FirstName";
                     }
                 }
-            echo $query;
             mysqli_close($connection);
         }
 
