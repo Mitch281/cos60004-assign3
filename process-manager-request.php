@@ -114,29 +114,36 @@
             $firstName = sanitise_input($_GET["first_name"]);
             $lastName = sanitise_input($_GET["last_name"]);
 
-            // Both first names and last names empty or both first names and last names filled.
-            if (($firstName == "" && $lastName == "") || ($firstName != "" && $lastName != "")) {
-                $query = "select * from eoi where FirstName like '$firstName%' and LastName like '$lastName%'";
+            if ($firstName == "" && $lastName == "") {
+                echo "<p>Please enter a name.</p>";
             }
 
-            // First name is filled but last name is empty.
-            else if ($firstName != "" && $lastName == "") {
-                $query = "select * from eoi where FirstName like '$firstName%'";
-            }
-            
-            // First name is empty but last name is filled.s
             else {
-                $query = "select * from eoi where LastName like '$lastName%'";
-            }
+                
+                // Both first names and last names empty or both first names and last names filled.
+                if ($firstName != "" && $lastName != "") {
+                    $query = "select * from eoi where FirstName like '$firstName%' and LastName like '$lastName%'";
+                }
 
-            $result = mysqli_query($connection, $query);
+                // First name is filled but last name is empty.
+                else if ($firstName != "" && $lastName == "") {
+                    $query = "select * from eoi where FirstName like '$firstName%'";
+                }
 
-             // Note: !$result is for when query is invalid.
-             if (!$result || mysqli_num_rows($result) == 0) {
-                echo "<p>There are no job applications under this name yet.</p>";
-            }
-            else {
-                returnTable($result);
+                // First name is empty but last name is filled.s
+                else {
+                    $query = "select * from eoi where LastName like '$lastName%'";
+                }
+
+                $result = mysqli_query($connection, $query);
+
+                 // Note: !$result is for when query is invalid.
+                 if (!$result || mysqli_num_rows($result) == 0) {
+                    echo "<p>There are no job applications under this name yet.</p>";
+                }
+                else {
+                    returnTable($result);
+                }
             }
             mysqli_close($connection);
         }
