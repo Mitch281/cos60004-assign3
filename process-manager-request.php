@@ -223,7 +223,6 @@
         }
 
         function changeStatusGivenEOINumber() {
-            // TODO: Add message if the status we want to change to is already the status.
             global $connection;
             global $sqlTable;
 
