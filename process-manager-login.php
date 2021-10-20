@@ -10,7 +10,7 @@
     <meta name="description" content="Jobs available and their descriptions." />
     <meta name="keywords" content="hiring, jobs, vacant" />
     <meta name="author" content="Mitchell Anton" />
-    <title></title>
+    <title>Login Failed</title>
     <link href="styles/style.css" rel="stylesheet" />
 </head>
 
