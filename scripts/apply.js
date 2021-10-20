@@ -116,9 +116,11 @@ function getAge(dateOfBirth) {
     return age;
 }
 
+var debug = true;
 // Number of times a form is submitted (not necessarily successfully).
 var numTimesSubmitted = 0;
-function validateForm() {
+if (!debug) {
+    function validateForm() {
     var checkServerSideValidation = true;
     numTimesSubmitted++;
     if (numTimesSubmitted >= 1) {
@@ -165,6 +167,7 @@ function validateForm() {
     }
 
     return valid;
+}
 }
 
 // Gets the job reference number from local storage and displays it as read only.
