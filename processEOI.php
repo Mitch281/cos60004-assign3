@@ -57,51 +57,60 @@
         // Checks if the postcode entered matches the corresponding state selected.
         function checkPostcode($postcode, $state) {
             $validPostcode = true;
+            $errorMessage = "";
 
             $firstNumber = $postcode[0];
             switch($state) {
                 case "VIC":
                     if ($firstNumber !== "3" && $firstNumber !== "8") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in Victoria start with either a 3 or an 8!</p>\n";
                     }
                     break;
                 case "NSW":
                     if ($firstNumber !== "1" && $firstNumber !== "2") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in New South Wales start with either a 1 or a 7!</p>\n";
                     }
                     break;
                 case "QLD":
                     if ($firstNumber !== "4" && $firstNumber !== "9") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in Queensland start with either a 4 or a 9!</p>\n";
                     }
                     break;
                 case "NT":
                     if ($firstNumber !== "0") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in Northen Territory start with a 0!</p>\n";
                     }
                     break;
                 case "WA":
                     if ($firstNumber !== "6") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in Western Australia start with a 6!</p>\n";
                     }
                     break;
                 case "SA":
                     if ($firstNumber !== "5") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in South Australia start with a 5!</p>\n";
                     }
                     break;
                 case "TAS":
                     if ($firstNumber !== "7") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in Tasmania start with a 7!</p>\n";
                     }
                     break;
                 case "ACT":
                     if ($firstNumber !== "0") {
                         $validPostcode = false;
+                        $errorMessage .= "<p>The postcode of suburbs/towns in Australian Capital Territory start with a 0!</p>\n";
                     }
                     break;
                 }
-            return $validPostcode;
+            return $errorMessage;
         }
 
         function validateForm() {
@@ -141,7 +150,7 @@
 
                 if (!preg_match("/^[A-Za-z]{1,20}$/", $lastName)) {
                     $valid = false;
-                    echo "<p>Your last name can only contain alpha characters and spaces, and be of length 1 to 20 characters!</p>\n";
+                    echo "<p>Your last name can only contain alpha characters and be of length 1 to 20 characters!</p>";
                 }
             }
             else {
@@ -174,6 +183,7 @@
             // Check gender.
             if (!isset($_POST["gender"])) {
                 $valid = false;
+                echo "<p>Please select a gender!</p>\n";
             }
 
             // Check street address.
@@ -182,10 +192,12 @@
                 // Not needed because max length is 40 in html but whatever.
                 if (strlen($streetAddress) > 40) {
                     $valid = false;
+                    echo "<p>Your street address must be less than or equal to 40 characters!</p>\n";
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter a street address.</p>\n";
             }
 
             // Check suburb.
@@ -194,10 +206,12 @@
                 // Noy needed beause max length is 40 in html but whatever.
                 if (strlen($suburb) > 40) {
                     $valid = false;
+                    echo "<p>Your suburb must be less than or equal to 40 characters!</p>\n";
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter a suburb.</p>\n";
             }
 
             // Check state.
@@ -206,6 +220,7 @@
             }
             else {
                 $valid = false;
+                echo "<p>Please select a state.</p>\n";
             }
 
             //Check postcode.
@@ -213,17 +228,21 @@
                 $postcode = sanitise_input($_POST["postcode"]);
                 if (!preg_match("/^[0-9]{4}$/", $postcode)) {
                     $valid = false;
+                    echo "<p>Your postcode must be 4 digits!</p>\n";
                 }
                 // A state has also been entered.
                 else if (isset($_POST["state"]) && $_POST["state"] !== "") {
                     $state = sanitise_input($_POST["state"]);
-                    if (!checkPostcode($postcode, $state)) {
+                    $postcodeErrorMessage = checkPostcode($postcode, $state);
+                    if ($postcodeErrorMessage != "") {
                         $valid = false;
+                        echo $postcodeErrorMessage;
                     }
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter a postcode.</p>\n";
             }
 
             // Check email
@@ -232,10 +251,12 @@
 
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $valid = false;
+                    echo "<p>Please enter your email in the appropriate format.</p>\n";
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter your email.<p>\n";
             }
 
             // Check phone number
@@ -244,10 +265,12 @@
 
                 if (!preg_match("/^[0-9' ']{8,12}$/", $phoneNumber)) {
                     $valid = false;
+                    echo "<p>Your phone number must only contain digits and spaces, and must be between 8 and 12 characters.</p>\n";
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter your phone number!</p>\n";
             }
 
             // Check if other skills textbox empty if other skills checkbox checked.
@@ -258,6 +281,7 @@
                 if (in_array("other_skills", $skills)) {
                     if (!isset($_POST["other_skills"]) || $_POST["other_skills"] === "") {
                         $valid = false;
+                        echo "<p>You have selected that you have other skills. Please specify these skills in the textbox below.</p>\n";
                     }
                 }
             }
