@@ -19,7 +19,7 @@
     ?>
     <h2 id="form_header">Application Form</h2>
     <p id="timer"></p>
-    <form id="job_form" method="post" action="processEOI.php">
+    <form id="job_form" method="post" action="processEOI.php" novalidate="novalidate">
         <p><label for="reference_number">Job Reference Number</label>
             <input type="text" name="reference_number" id="reference_number" required="required" pattern="[a-zA-Z0-9]{5}" />
         </p>

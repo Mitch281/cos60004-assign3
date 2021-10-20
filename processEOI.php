@@ -127,22 +127,26 @@
 
                 if (!preg_match("/^[A-Za-z]{1,20}$/", $firstName)) {
                     $valid = false;
+                    echo "<p>Your first name can only contain alpha characters and be of length 1 to 20 characters!</p>";
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter a first name.</p>\n";
             }
 
             // Check last name.
-            if (isset($_POST["last_name"]) && $_POST["first_name"] !== "") {
+            if (isset($_POST["last_name"]) && $_POST["last_name"] !== "") {
                 $lastName = sanitise_input($_POST["last_name"]);
 
                 if (!preg_match("/^[A-Za-z-]{1,20}$/", $lastName)) {
                     $valid = false;
+                    echo "<p>Your last name can only contain alpha characters and spaces, and be of length 1 to 20 characters!</p>\n";
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter a last name.</p>\n";
             }
 
             // Check age.
