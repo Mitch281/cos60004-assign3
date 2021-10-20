@@ -139,7 +139,7 @@
             if (isset($_POST["last_name"]) && $_POST["last_name"] !== "") {
                 $lastName = sanitise_input($_POST["last_name"]);
 
-                if (!preg_match("/^[A-Za-z-]{1,20}$/", $lastName)) {
+                if (!preg_match("/^[A-Za-z]{1,20}$/", $lastName)) {
                     $valid = false;
                     echo "<p>Your last name can only contain alpha characters and spaces, and be of length 1 to 20 characters!</p>\n";
                 }
@@ -156,16 +156,19 @@
 
                 if (!preg_match($dateOfBirthRE, $dateOfBirth)) {
                     $valid = false;
+                    echo "<p>Your date of birth must be in the format dd/mm/yy.</p>\n";
                 }
                 else {
                     $age = getAge($dateOfBirth);
                     if ($age < 15 || $age > 80) {
                         $valid = false;
+                        echo "<p>You must be between the ages of 15 and 80 years old to apply for a job!</p>\n";
                     }
                 }
             }
             else {
                 $valid = false;
+                echo "<p>Please enter a date of birth.</p>\n";
             }
 
             // Check gender.
