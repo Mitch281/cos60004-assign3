@@ -12,7 +12,6 @@
 
 <body>
     <?php
-    //TODO: Write appropriate pages if data does not validate.
     //TODO: HTML VALIDATION.
         function sanitise_input($data) {
             $data = trim($data);
@@ -119,6 +118,7 @@
             }
             else {
                 $valid = false;
+                header("location: apply.php");
             }
 
             // Check first name.
@@ -131,7 +131,6 @@
             }
             else {
                 $valid = false;
-                header("location: apply.php");
             }
 
             // Check last name.
