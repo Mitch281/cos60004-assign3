@@ -345,7 +345,6 @@
             }
         }
 
-        validateForm();
         sendDataToEOI();
     ?>
 </body>
