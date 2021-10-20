@@ -36,6 +36,18 @@
             the login page.
         </li>
     </ul>
+    <h2><a href="manage.php">Enhancement 2</a></h2>
+    <ul>
+        <li>The interaction to trigger this enhancement is again to go to the manage page and login. There, the 
+            manager has the option to retreive job applications. The enhancement here is the ability to sort job
+            applications by certain fields. If "Sort by:" is selected, then the default sorting is applied (sort by
+            eoi number). If sorting by first name is selected, it will also sort by last name and vice versa.
+        </li>
+        <li>The implementation of this enhancement was first to implement the front end. After that, it was simply a
+            matter of finding which option was selected in php, and then writing the sql query based on which option was
+            selected.
+        </li>
+    </ul>
     <hr />
     <?php  
         include_once("footer.inc");
