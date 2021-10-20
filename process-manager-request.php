@@ -75,7 +75,7 @@
         function getAllApplications() {
             global $connection;
             global $sqlTable;
-            $sortRequest = $_GET["manager_sort_request"];
+            $sortRequest = sanitise_input($_GET["manager_sort_request"]);
 
 
             if ($sortRequest === "none") {
@@ -111,7 +111,7 @@
             global $connection;
             global $sqlTable;
             $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
-            $sortRequest = $_GET["manager_sort_request"];
+            $sortRequest = sanitise_input($_GET["manager_sort_request"]);
 
             if ($sortRequest === "none") {
                 // DON'T FORGET SINGLE QUOTATION MARKS!
@@ -145,7 +145,7 @@
             global $connection;
             global $sqlTable;
 
-            $sortRequest = $_GET["manager_sort_request"];
+            $sortRequest = sanitise_input($_GET["manager_sort_request"]);
             $firstName = sanitise_input($_GET["first_name"]);
             $lastName = sanitise_input($_GET["last_name"]);
 
@@ -171,6 +171,18 @@
                     $query = "select * from eoi where LastName like '$lastName%'";
                 }
 
+                if ($sortRequest !== "none") {
+                    $query .= " order by $sortRequest";
+
+                    if ($sortRequest === "FirstName") {
+                        $query .= ", LastName";
+                    }
+
+                    if ($sortRequest === "LastName") {
+                        $query .= ", FirstName";
+                    }
+                }
+
                 $result = mysqli_query($connection, $query);
 
                  // Note: !$result is for when query is invalid.
@@ -181,18 +193,6 @@
                     returnTable($result);
                 }
             }
-
-                if ($sortRequest !== "none") {
-                    $query .= "order by $sortRequest";
-
-                    if ($sortRequest === "FirstName") {
-                        $query .= ", LastName";
-                    }
-
-                    if ($sortRequest === "LastName") {
-                        $query .= ", FirstName";
-                    }
-                }
             mysqli_close($connection);
         }
 
