@@ -22,7 +22,7 @@
             header("location: manage.php");
         }
     ?>
-    <p>Username: Bo Li Password: f$hAVer42</p>
+    <p>Username: manager31 Password: f$hAVer42</p>
     <section id="manager_login">
         <h1>Manager Login</h1>
         <form method="get" action="process-manager-login.php">
