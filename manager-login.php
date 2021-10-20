@@ -15,7 +15,6 @@
 </head>
 <body>
     <?php
-    // TODO: Add login details for marker.
     $page = "";
         include_once("menu.inc");
         // User already logged in.
@@ -23,6 +22,7 @@
             header("location: manage.php");
         }
     ?>
+    <p>Username: Bo Li Password: f$hAVer42</p>
     <section id="manager_login">
         <h1>Manager Login</h1>
         <form method="get" action="process-manager-login.php">
