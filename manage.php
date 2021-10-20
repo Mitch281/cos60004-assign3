@@ -115,8 +115,8 @@
             <input type="text" name="eoi_number" id="eoi_number" required="required" pattern="[0-9]*" />
 
             <label for="status">Status</label>
-            <input type="text" name="status" required="required" pattern="[a-zA-Z]{3,7}" />
-            <input class="form_action" type="submit" name="change_status_given_eoi_number" id="status" value="Change Status">
+            <input type="text" name="status"  id="status" required="required" pattern="[a-zA-Z]{3,7}" />
+            <input class="form_action" type="submit" name="change_status_given_eoi_number" value="Change Status">
         </form>
     </fieldset>
 
