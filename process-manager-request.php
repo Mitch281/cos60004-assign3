@@ -234,12 +234,19 @@
             $checkExistQuery = "select * from eoi where eoiNumber = '$eoiNumber'";
             $checkExist = mysqli_query($connection, $checkExistQuery);
 
+            // The whole row of the select * from eoi number query.
+            $result = mysqli_query($connection, $checkExistQuery);
+            $row = mysqli_fetch_assoc($result);
+
             if ($status !== "New" && $status !== "Current" && $status !== "Final") {
                 echo "<p>You cannot change a status to this value!</p>";
             }
             // The eoiNumber does not exist.
             else if (mysqli_num_rows($checkExist) === 0) {
                 echo "<p>This job application number does not exist!</p>.";
+            }
+            else if ($row["Status"] == $status) {
+                echo "<p>The status is already set to $status!</p>";
             }
             else {
                 $query = "update eoi set Status = '$status' where eoiNumber = '$eoiNumber'";
