@@ -60,7 +60,7 @@
             </select>
         </p>
         <p><label for="postcode">Postcode</label>
-            <input type="text" name="postcode" id="postcode" required="required" pattern=[0-9]{4}>
+            <input type="text" name="postcode" id="postcode" required="required" pattern="[0-9]{4}">
             <span id="empty_postcode" class="error_message"></span>
             <span id="invalid_postcode" class="error_message"></span>
         </p>
@@ -70,7 +70,7 @@
             pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"/>
         </p>
         <p><label for="phone_number">Phone Number</label>
-            <input type="text" name="phone_number" id="phone_number" required="required" pattern=[0-9' ']{8,12}>
+            <input type="text" name="phone_number" id="phone_number" required="required" pattern="[0-9' ']{8,12}">
         </p>
         <fieldset id="skills">
             <legend>Skills</legend>
