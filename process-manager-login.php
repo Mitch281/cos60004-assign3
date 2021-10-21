@@ -17,7 +17,7 @@
 <body>
     <?php
         require_once("settings.php");
-        $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
+        $connection = @mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "ManagerLogin";
         
         // Boolean to check if the username and password entered is valid.

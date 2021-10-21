@@ -12,7 +12,6 @@
 
 <body>
     <?php
-    //TODO: HTML VALIDATION.
         function sanitise_input($data) {
             $data = trim($data);
             $data = stripslashes($data);

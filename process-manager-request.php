@@ -12,10 +12,8 @@
 
 <body>
     <?php
-        // TODO: Add relevant "@" annotations.
-        // TODO: HTML VALIDATION.
         require_once("settings.php");
-        $connection = mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
+        $connection = @mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
         $sqlTable = "eoi";
 
         function sanitise_input($data) {
