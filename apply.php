@@ -81,7 +81,7 @@
             <label><input type="checkbox" name="skills[]" value="other_skills" />Other Skills</label>
         </fieldset>
         <!-- Keep textarea tags on same line or else plaeholder text will not appear! -->
-        <p><textarea id="other_skills" name="other_skills" rows="10" cols="60" placeholder="Enter other skills here"></textarea>
+        <p><textarea id="other_skills" name="other_skills" rows="10" cols="60" placeholder="Enter other skills here" maxlength=1000></textarea>
             <span id="empty_skills" class="error_message"></span></p>
         <input class="form_action" type="submit" value="Apply" />
         <input class="form_action" type="reset" value="Reset form" />
