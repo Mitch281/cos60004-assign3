@@ -340,7 +340,7 @@
                         EmailAddress varchar(30) not null,
                         PhoneNumber varchar(12) not null,
                         Skills varchar(100),
-                        OtherSkills varchar(200),
+                        OtherSkills varchar(1000),
                         Status varchar(7) not null default 'New'
                     )";
 
