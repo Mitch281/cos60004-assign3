@@ -14,7 +14,6 @@
     <?php
         require_once("settings.php");
         $connection = @mysqli_connect($host, $user, $pwd, $sql_db) or die("<p>Database connection failure.</p>");
-        $sqlTable = "eoi";
 
         function sanitise_input($data) {
             $data = trim($data);
@@ -70,7 +69,6 @@
 
         function getAllApplications() {
             global $connection;
-            global $sqlTable;
             $sortRequest = sanitise_input($_GET["manager_sort_request"]);
 
 
@@ -105,7 +103,6 @@
         // Get all of the eoi's corresponding to the entered job reference number.
         function getEOIsGivenRef() {
             global $connection;
-            global $sqlTable;
             $jobReferenceNumber = sanitise_input($_GET["reference_number"]);
             $sortRequest = sanitise_input($_GET["manager_sort_request"]);
 
@@ -139,7 +136,6 @@
 
         function getEOIsGivenName() {
             global $connection;
-            global $sqlTable;
 
             $sortRequest = sanitise_input($_GET["manager_sort_request"]);
             $firstName = sanitise_input($_GET["first_name"]);
@@ -194,7 +190,6 @@
 
         function deleteEOIsGivenRef() {
             global $connection;
-            global $sqlTable;
 
             $jobReferenceNumber = sanitise_input($_POST["job_reference_number"]);
 
@@ -220,7 +215,6 @@
 
         function changeStatusGivenEOINumber() {
             global $connection;
-            global $sqlTable;
 
             $eoiNumber = sanitise_input($_POST["eoi_number"]);
             $status = sanitise_input($_POST["status"]);
