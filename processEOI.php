@@ -3,11 +3,16 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Job application form." />
-    <meta name="keywords" content="apply, vacancies, job, career" />
+    <meta name="description" content="form submission message" />
+    <meta name="keywords" content="unsuccessful, successful" />
     <meta name="author" content="Mitchell Anton" />
     <title>Form confirmation | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: This page validates the job application form. If the form validates, then the relevant information
+    is sent to the database and a success message is displayed. Otherwise, a fail message is displayed. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 21/10/2021 -->
+    <!-- Validated: OK (21/10/2021) -->
 </head>
 
 <body>

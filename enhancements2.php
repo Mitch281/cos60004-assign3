@@ -3,11 +3,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Home page" />
+    <meta name="description" content="Enhancements 2 page" />
     <meta name="keywords" content="Anton & Turing Technologies, jobs, hire" />
     <meta name="author" content="Mitchell Anton" />
     <title>Enhancements 2 | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: This page describes the assignment 2 enhacements implemented. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 15/10/2021 -->
+    <!-- Validated: OK (15/10/2021) -->
 </head>
 
 <body>

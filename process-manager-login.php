@@ -7,11 +7,16 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Jobs available and their descriptions." />
-    <meta name="keywords" content="hiring, jobs, vacant" />
+    <meta name="description" content="Manager login" />
+    <meta name="keywords" content="" />
     <meta name="author" content="Mitchell Anton" />
     <title>Login Failed</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: This page gets the username and password entered by the manager, and checks if the username and 
+    password is valid. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 21/10/2021 -->
+    <!-- Validated: OK (21/10/2021) -->
 </head>
 
 <body>

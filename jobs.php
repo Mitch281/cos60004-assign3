@@ -9,6 +9,10 @@
     <title>Job Descriptions | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
     <script src="scripts/jobs.js"></script>
+    <!-- Description: This page displays jobs available and their descriptions. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 12/10/2021 -->
+    <!-- Validated: OK (12/10/2021) -->
 </head>
 
 <body>

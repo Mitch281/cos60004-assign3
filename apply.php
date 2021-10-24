@@ -10,6 +10,10 @@
     <link href="styles/style.css" rel="stylesheet" />
     <script src="scripts/apply.js"></script>
     <script src="scripts/enhancements.js"></script>
+    <!-- Description: This is the job application page. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 21/10/2021 -->
+    <!-- Validated: OK (21/10/2021) -->
 </head>
 
 <body>

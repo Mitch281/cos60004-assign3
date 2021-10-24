@@ -7,11 +7,16 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Job application form." />
+    <meta name="description" content="Manager page" />
     <meta name="keywords" content="" />
     <meta name="author" content="Mitchell Anton" />
     <title>Manager Page | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: This is the page where a manager can request data from the database as well as change data in the 
+    database -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 20/10/2021 -->
+    <!-- Validated: OK (20/10/2021) -->
 </head>
 
 <body>
