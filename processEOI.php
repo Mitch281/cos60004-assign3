@@ -169,7 +169,7 @@
 
                 if (!preg_match($dateOfBirthRE, $dateOfBirth)) {
                     $valid = false;
-                    echo "<p>Your date of birth must be in the format dd/mm/yy.</p>\n";
+                    echo "<p>Your date of birth must be in the format dd/mm/yyyy.</p>\n";
                 }
                 else {
                     $age = getAge($dateOfBirth);
