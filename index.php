@@ -9,6 +9,10 @@
     <title>Home Page | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
     <script src="scripts/enhancements.js"></script>
+    <!-- Description: This is the home page of the website. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 18/10/2021 -->
+    <!-- Validated: OK (18/10/2021) -->
 </head>
 
 <body id="index_page">

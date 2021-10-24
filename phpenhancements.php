@@ -8,6 +8,10 @@
     <meta name="author" content="Mitchell Anton" />
     <title>php enhancements | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: This page describes the enhancements implemented in assignment 3. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 20/10/2021 -->
+    <!-- Validated: OK (20/10/2021) -->
 </head>
 
 <body>

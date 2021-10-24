@@ -3,11 +3,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Home page" />
+    <meta name="description" content="About me page" />
     <meta name="keywords" content="Anton & Turing Technologies, jobs, hire" />
     <meta name="author" content="Mitchell Anton" />
     <title>About me | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: About me page -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 04/10/2021 -->
+    <!-- Validated: OK (04/10/2021) -->
 </head>
 
 <body>

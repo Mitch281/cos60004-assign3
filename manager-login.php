@@ -7,11 +7,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Job application form." />
+    <meta name="description" content="Manager login page" />
     <meta name="keywords" content="" />
     <meta name="author" content="Mitchell Anton" />
     <title>Manager Login | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: The login page for managers. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 20/10/2021 -->
+    <!-- Validated: OK (20/10/2021) -->
 </head>
 <body>
     <?php

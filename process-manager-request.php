@@ -8,6 +8,10 @@
     <meta name="author" content="Mitchell Anton" />
     <title>Result | Anton & Turing Technologies</title>
     <link href="styles/style.css" rel="stylesheet" />
+    <!-- Description: This page gets the manager request and queries or changes the database based on the request. -->
+    <!-- Author: Mitchell Anton -->
+    <!-- Date: 24/10/2021 -->
+    <!-- Validated: OK (24/10/2021) -->
 </head>
 
 <body>
